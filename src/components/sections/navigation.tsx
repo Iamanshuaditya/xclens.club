@@ -25,17 +25,17 @@ const Navigation = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-[99] flex justify-center p-10 pointer-events-none">
       <header className="pointer-events-auto">
-        <div 
+        <div
           className="relative flex items-center bg-[rgba(0,0,0,0.8)] backdrop-blur-[12px] h-[45px] px-1 rounded-full border border-white/10 shadow-[inset_2px_2px_1px_-2px_rgba(0,0,0,0.5),inset_-2px_-2px_1px_-2px_rgba(0,0,0,0.5)]"
         >
           {/* Brand Logo Wrapper */}
           <div className="flex items-center justify-center h-[37px] w-[37px] ml-1">
-            <a 
-              href="/" 
+            <a
+              href="/"
               className="relative flex items-center justify-center w-[37px] height-[37px] rounded-full transition-opacity hover:opacity-80"
               aria-label="Home"
             >
-              <Image 
+              <Image
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/svgs/owF1UKTXjGXZEyUs1qLF6U0K2Iw-1.svg"
                 alt="Xcelens Logo"
                 width={20}
@@ -62,8 +62,8 @@ const Navigation = () => {
                   }}
                   className={cn(
                     "relative flex items-center gap-2 px-3 py-1.5 rounded-full transition-all duration-300 group",
-                    isActive 
-                      ? "text-white" 
+                    isActive
+                      ? "text-white"
                       : "text-white/60 hover:text-white"
                   )}
                 >
@@ -71,7 +71,7 @@ const Navigation = () => {
                   <span className="text-[14px] font-medium tracking-[0.02em] whitespace-nowrap">
                     {link.name}
                   </span>
-                  
+
                   {/* Active Indicator Bar - Optional styling refinement suggested by high level design */}
                   {isActive && (
                     <span className="absolute -bottom-[2px] left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full opacity-40" />

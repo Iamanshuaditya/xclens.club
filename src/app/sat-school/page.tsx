@@ -17,9 +17,7 @@ export default function SatSchoolPage() {
                 but BioQuote can be placed here if it's separate */}
             <BioQuote />
           </div>
-          <div className="lg:col-span-6 hidden lg:block">
-            <BookComposition />
-          </div>
+
         </div>
       </div>
       <CtaBanner />

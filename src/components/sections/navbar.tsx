@@ -1,13 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
+import { House, User, BookOpen, Mail, GraduationCap } from 'lucide-react';
 
 const Navbar = () => {
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Saturday School', href: '/sat-school' },
+    { name: 'Home', href: '/', icon: <House size={14} /> },
+    { name: 'About', href: '/about', icon: <User size={14} /> },
+    { name: 'Blog', href: '/blog', icon: <BookOpen size={14} /> },
+    { name: 'Contact', href: '/contact', icon: <Mail size={14} /> },
+    { name: 'Saturday School', href: '/sat-school', icon: <GraduationCap size={14} /> },
   ];
 
   return (
@@ -17,8 +18,8 @@ const Navbar = () => {
           {/* Glassmorphism Background Container */}
           <div className="absolute inset-0 rounded-[5000px] overflow-hidden">
             {/* The actual dark glass background layer */}
-            <div 
-              className="absolute inset-0 bg-[rgba(0,0,0,0.75)] backdrop-blur-[10px]" 
+            <div
+              className="absolute inset-0 bg-[rgba(0,0,0,0.75)] backdrop-blur-[10px]"
               style={{
                 boxShadow: 'inset 2px 2px 1px -2px rgba(0, 0, 0, 0.5), inset -2px -2px 1px -2px rgba(0, 0, 0, 0.5)'
               }}
@@ -29,13 +30,13 @@ const Navbar = () => {
           <div className="relative flex items-center justify-between w-full h-full px-[4px] py-[4px]">
             {/* Circular Logo Area */}
             <div className="flex items-center justify-center pl-[2px]">
-              <a 
-                href="./" 
+              <a
+                href="./"
                 className="relative flex items-center justify-center w-[37px] h-[37px] rounded-full overflow-hidden transition-transform hover:scale-105"
               >
-                <div className="w-full h-full bg-white flex items-center justify-center">
-                  <Image 
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/svgs/owF1UKTXjGXZEyUs1qLF6U0K2Iw-1.svg"
+                <div className="w-full h-full  flex items-center justify-center">
+                  <Image
+                    src="https://framerusercontent.com/images/owF1UKTXjGXZEyUs1qLF6U0K2Iw.svg"
                     alt="Xcelens Logo"
                     width={40}
                     height={40}
@@ -51,8 +52,11 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="group relative flex items-center px-[12px] py-[8px] transition-colors"
+                  className="group relative flex items-center gap-2 px-[12px] py-[8px] transition-colors"
                 >
+                  <span className="text-white/70 group-hover:text-white transition-colors">
+                    {item.icon}
+                  </span>
                   <span className="text-[14px] font-medium text-white font-sans tracking-tight">
                     {item.name}
                   </span>
@@ -66,7 +70,7 @@ const Navbar = () => {
       </div>
 
       {/* SVG filter for the specific liquid drop effect if required by Framer styles 
-          (referenced in HTML but usually masked by the background div) */}
+            (referenced in HTML but usually masked by the background div) */}
       <svg className="absolute w-0 h-0 invisible" aria-hidden="true">
         <filter id="liquidDrop">
           <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
