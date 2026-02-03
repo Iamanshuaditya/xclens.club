@@ -206,15 +206,15 @@ export default function WorkshopsPage() {
                 <div className="max-w-7xl mx-auto">
 
                     {/* SEASON HEADER */}
-                    <div className="flex items-end justify-between mb-16 border-b border-white/10 pb-8">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-0 mb-16 border-b border-white/10 pb-8">
                         <div>
                             <span className="text-xs font-bold uppercase tracking-widest text-white/30 mb-2 block">Current Season</span>
                             <h2 className="text-5xl font-serif">Season 04: The Awakening</h2>
                         </div>
-                        <div className="hidden md:flex gap-2">
-                            <button className="px-4 py-2 rounded-full border border-white/10 text-sm text-white/50 hover:bg-white hover:text-black transition-colors">Season 03</button>
-                            <button className="px-4 py-2 rounded-full bg-white text-black text-sm font-medium">Season 04</button>
-                            <button className="px-4 py-2 rounded-full border border-white/10 text-sm text-white/50 hover:bg-white hover:text-black transition-colors">Season 05</button>
+                        <div className="flex gap-2 overflow-x-auto w-full md:w-auto no-scrollbar pb-1 md:pb-0">
+                            <button className="whitespace-nowrap px-4 py-2 rounded-full border border-white/10 text-sm text-white/50 hover:bg-white hover:text-black transition-colors">Season 03</button>
+                            <button className="whitespace-nowrap px-4 py-2 rounded-full bg-white text-black text-sm font-medium">Season 04</button>
+                            <button className="whitespace-nowrap px-4 py-2 rounded-full border border-white/10 text-sm text-white/50 hover:bg-white hover:text-black transition-colors">Season 05</button>
                         </div>
                     </div>
 

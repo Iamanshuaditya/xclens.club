@@ -108,7 +108,7 @@ const HeroSection = () => {
           transition={textTransition}
         >
           <h1
-            className="text-[90px] font-normal leading-[99px] text-[#000000] tracking-tight text-center"
+            className="text-[12vw] md:text-[90px] font-normal leading-tight md:leading-[99px] text-[#000000] tracking-tight text-center"
             style={{ fontFamily: 'var(--font-instrument-serif)' }}
           >
             From Overwhelm <br />
