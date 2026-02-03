@@ -1,12 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
-import { House, User, BookOpen, Mail, GraduationCap } from 'lucide-react';
+import { House, User, BookOpen, Mail, GraduationCap, Beaker, Star } from 'lucide-react';
 
 const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '/', icon: <House size={14} /> },
     { name: 'About', href: '/about', icon: <User size={14} /> },
     { name: 'Blog', href: '/blog', icon: <BookOpen size={14} /> },
+    { name: 'Labs', href: '/labs', icon: <Beaker size={14} /> },
+    { name: 'Fellowship', href: '/si-fellowship', icon: <Star size={14} /> },
     { name: 'Contact', href: '/contact', icon: <Mail size={14} /> },
     { name: 'Saturday School', href: '/sat-school', icon: <GraduationCap size={14} /> },
   ];
