@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { House, User, BookOpen, Mail, GraduationCap, Beaker, Star } from 'lucide-react';
+import { House, User, BookOpen, Mail, GraduationCap, Beaker, Star, Users } from 'lucide-react';
 
 const Navbar = () => {
   const navItems = [
@@ -9,8 +9,10 @@ const Navbar = () => {
     { name: 'Blog', href: '/blog', icon: <BookOpen size={14} /> },
     { name: 'Labs', href: '/labs', icon: <Beaker size={14} /> },
     { name: 'Fellowship', href: '/si-fellowship', icon: <Star size={14} /> },
+    { name: 'Workshops', href: '/workshops', icon: <BookOpen size={14} /> },
+    { name: 'Clubs', href: '/clubs', icon: <Users size={14} /> },
     { name: 'Contact', href: '/contact', icon: <Mail size={14} /> },
-    { name: 'Saturday School', href: '/sat-school', icon: <GraduationCap size={14} /> },
+    { name: 'Sat Sch', href: '/sat-school', icon: <GraduationCap size={14} /> },
   ];
 
   return (

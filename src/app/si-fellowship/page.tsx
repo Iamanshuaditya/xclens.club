@@ -1,14 +1,33 @@
+"use client";
+
 import React from 'react';
 import Navbar from '@/components/sections/navbar';
 import CtaFooter from '@/components/sections/cta-footer';
 import { Instrument_Serif } from "next/font/google";
 import { MoveRight } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
 
 const instrumentSerif = Instrument_Serif({
     subsets: ["latin"],
     weight: "400",
     variable: "--font-instrument-serif",
 });
+
+const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+};
+
+const staggerText: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2
+        }
+    }
+};
 
 export default function SiFellowshipPage() {
     return (
@@ -19,22 +38,43 @@ export default function SiFellowshipPage() {
             <section className="relative w-full min-h-[85vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-20">
                 <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
 
-                    <div className="flex items-center gap-3 animate-fade-in-up opacity-0 translate-y-4" style={{ animationFillMode: 'forwards', animationDelay: '0.2s' }}>
+                    <motion.div
+                        className="flex items-center gap-3"
+                        initial={{ opacity: 0, width: "50%" }}
+                        animate={{ opacity: 1, width: "auto" }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                    >
                         <div className="h-[1px] w-8 bg-black/20"></div>
                         <span className="text-xs font-semibold tracking-[0.2em] uppercase text-black/60">Cohort 01 Applications Open</span>
                         <div className="h-[1px] w-8 bg-black/20"></div>
-                    </div>
+                    </motion.div>
 
-                    <h1 className="text-[12vw] md:text-[8rem] leading-[0.8] tracking-tight font-serif text-black animate-fade-in-up opacity-0 translate-y-8" style={{ animationFillMode: 'forwards', animationDelay: '0.3s' }}>
-                        Si Fellowship
-                    </h1>
+                    <motion.h1
+                        className="text-[12vw] md:text-[8rem] leading-[0.8] tracking-tight font-serif text-black"
+                        initial="hidden"
+                        animate="visible"
+                        variants={staggerText}
+                    >
+                        <motion.span className="inline-block" variants={fadeUp}>Si</motion.span>{' '}
+                        <motion.span className="inline-block" variants={fadeUp}>Fellowship</motion.span>
+                    </motion.h1>
 
-                    <p className="text-lg md:text-2xl text-black/70 max-w-2xl font-light leading-relaxed animate-fade-in-up opacity-0 translate-y-8" style={{ animationFillMode: 'forwards', animationDelay: '0.5s' }}>
+                    <motion.p
+                        className="text-lg md:text-2xl text-black/70 max-w-2xl font-light leading-relaxed"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8, duration: 1 }}
+                    >
                         Designed for the chosen few. A play on the Anglo-Spanish crossover that implores you to <span className="italic font-serif text-black">say yes</span>, while subtly suggesting you stand watch for the future.
-                    </p>
+                    </motion.p>
 
                     {/* Key Details Strip */}
-                    <div className="w-full max-w-4xl mt-16 border-y border-black/10 py-8 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0 animate-fade-in-up opacity-0 translate-y-8" style={{ animationFillMode: 'forwards', animationDelay: '0.7s' }}>
+                    <motion.div
+                        className="w-full max-w-4xl mt-16 border-y border-black/10 py-8 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ delay: 1, duration: 0.8, ease: "circOut" }}
+                    >
                         <div className="text-center md:text-left px-8 md:border-r border-black/10 w-full md:w-1/3">
                             <span className="block text-xs font-medium uppercase tracking-widest text-black/40 mb-2">Location</span>
                             <span className="text-xl font-serif">Bengaluru, IN</span>
@@ -47,15 +87,20 @@ export default function SiFellowshipPage() {
                             <span className="block text-xs font-medium uppercase tracking-widest text-black/40 mb-2">Start Date</span>
                             <span className="text-xl font-serif">Jan 01, 2026</span>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="mt-12 animate-fade-in-up opacity-0 translate-y-8" style={{ animationFillMode: 'forwards', animationDelay: '0.9s' }}>
+                    <motion.div
+                        className="mt-12"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 1.5 }}
+                    >
                         <a href="https://tally.so/r/D4KXkl" target="_blank" className="group relative inline-flex items-center justify-center px-10 py-4 bg-[#1A1A1A] text-[#FDFBF7] rounded-full text-sm font-medium tracking-wide overflow-hidden transition-all hover:px-12">
                             <span className="relative z-10 flex items-center gap-3">
                                 Apply for Fellowship <MoveRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
                             </span>
                         </a>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
@@ -65,34 +110,67 @@ export default function SiFellowshipPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
                         <div className="lg:col-span-5 relative">
                             <div className="sticky top-32">
-                                <span className="text-9xl font-serif absolute -top-20 -left-10 opacity-[0.03] pointer-events-none select-none">Why</span>
-                                <h2 className="text-5xl md:text-7xl font-serif leading-[1.1] mb-8 relative z-10">
+                                <motion.span
+                                    className="text-9xl font-serif absolute -top-20 -left-10 opacity-[0.03] pointer-events-none select-none"
+                                    initial={{ x: -50, opacity: 0 }}
+                                    whileInView={{ x: 0, opacity: 0.03 }}
+                                    viewport={{ once: true }}
+                                >
+                                    Why
+                                </motion.span>
+                                <motion.h2
+                                    className="text-5xl md:text-7xl font-serif leading-[1.1] mb-8 relative z-10"
+                                    initial={{ opacity: 0, x: -30 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.8 }}
+                                    viewport={{ once: true }}
+                                >
                                     The Future Belongs to Elite Designers.
-                                </h2>
+                                </motion.h2>
                                 <div className="h-[2px] w-24 bg-black/10 mb-8"></div>
                                 <p className="text-sm font-medium uppercase tracking-widest text-black/40">The Thesis</p>
                             </div>
                         </div>
                         <div className="lg:col-span-7 space-y-12">
-                            <p className="text-2xl md:text-3xl font-light leading-relaxed text-black/80">
+                            <motion.p
+                                className="text-2xl md:text-3xl font-light leading-relaxed text-black/80"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.2, duration: 0.8 }}
+                                viewport={{ once: true }}
+                            >
                                 Design is no longer just aesthetics; it is the modern tool for trust. Yet, the fraternity has faced hardship. The few who weather the storm are rewarded <span className="underline decoration-1 underline-offset-4 decoration-black/30">asymmetrically</span>.
-                            </p>
+                            </motion.p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
-                                <div className="p-8 bg-[#F3F3F3] rounded-t-[2px] rounded-b-[20px]">
+                                <motion.div
+                                    className="p-8 bg-[#F3F3F3] rounded-t-[2px] rounded-b-[20px]"
+                                    whileHover={{ y: -5 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.3 }}
+                                    viewport={{ once: true }}
+                                >
                                     <span className="text-4xl font-serif mb-4 block text-black/20">01</span>
                                     <h4 className="text-lg font-bold mb-3 uppercase tracking-wide">Domination</h4>
                                     <p className="text-black/60 font-light leading-relaxed">
                                         Si is building the backbone for designers to rely upon, ensuring the chosen few dominate their industries.
                                     </p>
-                                </div>
-                                <div className="p-8 bg-[#1A1A1A] text-[#FDFBF7] rounded-t-[2px] rounded-b-[20px]">
+                                </motion.div>
+                                <motion.div
+                                    className="p-8 bg-[#1A1A1A] text-[#FDFBF7] rounded-t-[2px] rounded-b-[20px]"
+                                    whileHover={{ y: -5 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.4 }}
+                                    viewport={{ once: true }}
+                                >
                                     <span className="text-4xl font-serif mb-4 block text-white/20">02</span>
                                     <h4 className="text-lg font-bold mb-3 uppercase tracking-wide">Exploration</h4>
                                     <p className="text-white/60 font-light leading-relaxed">
                                         An all-expenses-paid 2-week exploration of the country. Travel, shoot content, and supercharge output with AI.
                                     </p>
-                                </div>
+                                </motion.div>
                             </div>
 
                             <p className="text-lg text-black/60 border-l-[3px] border-black/10 pl-6 italic">
@@ -106,10 +184,15 @@ export default function SiFellowshipPage() {
             {/* PROGRAM DETAILS - Clean Typography */}
             <section className="py-32 px-6 md:px-12 bg-[#FDFBF7]">
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-black/10 pb-8">
+                    <motion.div
+                        className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-black/10 pb-8"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                    >
                         <h2 className="text-5xl md:text-6xl font-serif">The Program Era</h2>
                         <span className="text-sm font-mono text-black/40">Cohort 1 • Jan 26</span>
-                    </div>
+                    </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
                         {/* Objectives List */}
@@ -122,10 +205,17 @@ export default function SiFellowshipPage() {
                                     "Mastery of AI Synthesizers (Midjourney, Firefly, Opus)",
                                     "No-code Execution (Framer, Webflow, Dora)"
                                 ].map((item, i) => (
-                                    <li key={i} className="group flex items-baseline gap-6 py-6 border-b border-black/5 hover:border-black/20 transition-colors cursor-default">
+                                    <motion.li
+                                        key={i}
+                                        className="group flex items-baseline gap-6 py-6 border-b border-black/5 hover:border-black/20 transition-colors cursor-default"
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: i * 0.1 }}
+                                        viewport={{ once: true }}
+                                    >
                                         <span className="text-xs font-mono text-black/30">0{i + 1}</span>
                                         <span className="text-xl md:text-2xl font-light group-hover:pl-2 transition-all duration-300">{item}</span>
-                                    </li>
+                                    </motion.li>
                                 ))}
                             </ul>
                         </div>
@@ -134,7 +224,13 @@ export default function SiFellowshipPage() {
                         <div>
                             <h3 className="text-sm font-bold uppercase tracking-widest mb-10 text-black/40">Deliverables</h3>
                             <div className="space-y-6">
-                                <div className="group p-8 border border-black/5 bg-white hover:bg-black hover:text-white transition-all duration-500 ease-out">
+                                <motion.div
+                                    className="group p-8 border border-black/5 bg-white hover:bg-black hover:text-white transition-all duration-500 ease-out"
+                                    whileHover={{ scale: 1.02 }}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                >
                                     <div className="flex justify-between items-start mb-4">
                                         <h4 className="text-2xl font-serif">The Content Machine</h4>
                                         <div className="w-2 h-2 rounded-full bg-black group-hover:bg-white transition-colors"></div>
@@ -145,9 +241,16 @@ export default function SiFellowshipPage() {
                                             <span key={tag} className="border border-current px-2 py-1 rounded-full uppercase tracking-wider">{tag}</span>
                                         ))}
                                     </div>
-                                </div>
+                                </motion.div>
 
-                                <div className="group p-8 border border-black/5 bg-white hover:bg-black hover:text-white transition-all duration-500 ease-out">
+                                <motion.div
+                                    className="group p-8 border border-black/5 bg-white hover:bg-black hover:text-white transition-all duration-500 ease-out"
+                                    whileHover={{ scale: 1.02 }}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                    viewport={{ once: true }}
+                                >
                                     <div className="flex justify-between items-start mb-4">
                                         <h4 className="text-2xl font-serif">The Playbook</h4>
                                         <div className="w-2 h-2 rounded-full bg-black group-hover:bg-white transition-colors"></div>
@@ -155,7 +258,7 @@ export default function SiFellowshipPage() {
                                     <p className="font-light opacity-80">
                                         Your "README.md" for design. A documentation of your entire journey and cognitive patterns.
                                     </p>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
                     </div>
@@ -164,7 +267,13 @@ export default function SiFellowshipPage() {
 
             {/* REMUNERATION - High-End Layout */}
             <section className="py-24 px-4 md:px-8">
-                <div className="max-w-7xl mx-auto bg-[#111111] text-[#E5E5E5] rounded-[2rem] overflow-hidden relative">
+                <motion.div
+                    className="max-w-7xl mx-auto bg-[#111111] text-[#E5E5E5] rounded-[2rem] overflow-hidden relative"
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
                     {/* Abstract background elements */}
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent rounded-full blur-[80px] pointer-events-none"></div>
 
@@ -179,7 +288,14 @@ export default function SiFellowshipPage() {
 
                             <div className="mt-16 space-y-8">
                                 <div>
-                                    <div className="text-5xl md:text-7xl font-light tracking-tighter mb-2">40K<span className="text-2xl align-top opacity-50">+</span></div>
+                                    <motion.div
+                                        className="text-5xl md:text-7xl font-light tracking-tighter mb-2"
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        40K<span className="text-2xl align-top opacity-50">+</span>
+                                    </motion.div>
                                     <div className="text-sm uppercase tracking-widest opacity-40">INR Total Remuneration</div>
                                 </div>
                                 <div className="flex flex-col gap-2 p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/5">
@@ -204,19 +320,21 @@ export default function SiFellowshipPage() {
                             <h3 className="text-2xl font-serif mb-12">Network & Resources</h3>
 
                             <div className="space-y-10">
-                                <div className="group">
-                                    <span className="block text-xs font-bold uppercase tracking-widest text-white/30 mb-2 group-hover:text-[#D4B483] transition-colors">Access</span>
-                                    <p className="text-2xl text-white/90 font-light leading-snug">
-                                        Warm introductions to LocalHost Fellows, GrowthX community, and The Knowledge Society.
-                                    </p>
-                                </div>
-
-                                <div className="group">
-                                    <span className="block text-xs font-bold uppercase tracking-widest text-white/30 mb-2 group-hover:text-[#D4B483] transition-colors">Career</span>
-                                    <p className="text-2xl text-white/90 font-light leading-snug">
-                                        Strategic assistance to land premium freelance clients (Founders & Startups).
-                                    </p>
-                                </div>
+                                {['Access', 'Career'].map((item, idx) => (
+                                    <motion.div
+                                        key={item}
+                                        className="group"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.2 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <span className="block text-xs font-bold uppercase tracking-widest text-white/30 mb-2 group-hover:text-[#D4B483] transition-colors">{item}</span>
+                                        <p className="text-2xl text-white/90 font-light leading-snug">
+                                            {item === 'Access' ? 'Warm introductions to LocalHost Fellows, GrowthX community, and The Knowledge Society.' : 'Strategic assistance to land premium freelance clients (Founders & Startups).'}
+                                        </p>
+                                    </motion.div>
+                                ))}
 
                                 <div className="pt-10 border-t border-white/10">
                                     <a href="https://growth.design/case-studies" target="_blank" className="text-white/60 hover:text-white transition-colors text-sm flex items-center gap-2">
@@ -226,15 +344,28 @@ export default function SiFellowshipPage() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </section>
 
             {/* CTA */}
             <section className="py-32 flex flex-col items-center justify-center text-center bg-white px-6">
-                <h2 className="text-4xl md:text-5xl font-serif mb-8">Ready to define the future?</h2>
-                <a href="https://tally.so/r/D4KXkl" target="_blank" className="relative group overflow-hidden bg-black text-white px-12 py-5 rounded-full font-medium text-lg transition-transform hover:-translate-y-1">
+                <motion.h2
+                    className="text-4xl md:text-5xl font-serif mb-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    Ready to define the future?
+                </motion.h2>
+                <motion.a
+                    href="https://tally.so/r/D4KXkl"
+                    target="_blank"
+                    className="relative group overflow-hidden bg-black text-white px-12 py-5 rounded-full font-medium text-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                >
                     <span className="relative z-10">Begin Application</span>
-                </a>
+                </motion.a>
             </section>
 
             <CtaFooter />
