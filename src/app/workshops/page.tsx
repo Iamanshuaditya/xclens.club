@@ -107,7 +107,7 @@ export default function WorkshopsPage() {
             <section className="py-32 px-6 border-t border-white/5 bg-[#0a0a0a]">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid md:grid-cols-12 gap-16">
-                        <div className="md:col-span-4 sticky top-24 self-start">
+                        <div className="md:col-span-4 md:sticky md:top-24 md:self-start mb-8 md:mb-0">
                             <motion.div
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}

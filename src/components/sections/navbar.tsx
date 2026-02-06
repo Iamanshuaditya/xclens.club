@@ -97,7 +97,7 @@ const Navbar = () => {
             {/* Header in Overlay */}
             <div className="flex justify-between items-center p-6 md:p-12">
               <a href="./" className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <div className="w-10 h-10  rounded-full flex items-center justify-center">
                   <Image
                     src="https://framerusercontent.com/images/owF1UKTXjGXZEyUs1qLF6U0K2Iw.svg"
                     alt="Xcelens Logo"
