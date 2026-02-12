@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { House, User, BookOpen, Mail, GraduationCap, Beaker, Star, Users, Menu, X, ArrowRight } from 'lucide-react';
+import { House, User, BookOpen, Mail, GraduationCap, Beaker, Star, Users, Menu, X, ArrowRight, Compass } from 'lucide-react';
 import { motion, AnimatePresence, DOMKeyframesDefinition } from 'framer-motion';
 
 const Navbar = () => {
@@ -11,6 +11,7 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '/', icon: <House size={20} /> },
     { name: 'About', href: '/about', icon: <User size={20} /> },
+    { name: 'Services', href: '/services', icon: <Compass size={20} /> },
     { name: 'Labs', href: '/labs', icon: <Beaker size={24} /> },
     { name: 'Fellowship', href: '/si-fellowship', icon: <Star size={24} /> },
     { name: 'Workshops', href: '/workshops', icon: <BookOpen size={20} /> },
@@ -147,7 +148,7 @@ const Navbar = () => {
                       className="group flex items-center justify-between text-4xl md:text-6xl font-serif border-b border-white/10 py-6 hover:pl-8 transition-all hover:text-white/60"
                     >
                       <span className="flex items-baseline gap-4">
-                        <span className="text-xs font-mono text-white/30 hidden md:inline-block">0{idx + 6}</span>
+                        <span className="text-xs font-mono text-white/30 hidden md:inline-block">{String(idx + 6).padStart(2, '0')}</span>
                         {item.name}
                       </span>
                       <ArrowRight className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />

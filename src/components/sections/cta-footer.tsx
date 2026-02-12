@@ -60,6 +60,7 @@ export default function CtaFooter() {
                 <span className="text-xs text-white/40 uppercase tracking-widest font-sans">Company</span>
                 <a href="/" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Home</a>
                 <a href="/about" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">About</a>
+                <a href="/services" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Services</a>
                 <a href="/blog" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Blog</a>
                 <a href="/contact" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Contact</a>
               </div>
