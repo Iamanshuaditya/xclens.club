@@ -38,10 +38,10 @@ export default function CtaFooter() {
       </div>
 
       {/* Footer Content - sitting on the dark gradient at bottom */}
-      <footer className="relative z-10 w-full px-6 md:px-12 pb-10 pt-24">
-        <div className="max-w-[1200px] mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+      <footer className="relative z-10 w-full px-6 md:px-12 pb-12 pt-24">
+        <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0 items-start">
           {/* Contact Information */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4">
             <p className="font-sans text-[14px] font-medium text-white/60">
               Have a question? Email me at
             </p>
@@ -53,13 +53,40 @@ export default function CtaFooter() {
             </a>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="flex flex-wrap gap-8 md:gap-10">
-            <a href="/" className="font-display text-[20px] md:text-[24px] text-white hover:text-white/70 transition-colors">Home</a>
-            <a href="/about" className="font-display text-[20px] md:text-[24px] text-white hover:text-white/70 transition-colors">About</a>
-            <a href="/blog" className="font-display text-[20px] md:text-[24px] text-white hover:text-white/70 transition-colors">Blog</a>
-            <a href="/contact" className="font-display text-[20px] md:text-[24px] text-white hover:text-white/70 transition-colors">Contact</a>
-          </nav>
+          {/* Navigation Links Grid */}
+          <div className="flex flex-col gap-8 md:text-right">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-4 text-left md:text-right">
+              <div className="flex flex-col gap-4">
+                <span className="text-xs text-white/40 uppercase tracking-widest font-sans">Company</span>
+                <a href="/" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Home</a>
+                <a href="/about" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">About</a>
+                <a href="/blog" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Blog</a>
+                <a href="/contact" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Contact</a>
+              </div>
+              <div className="flex flex-col gap-4">
+                <span className="text-xs text-white/40 uppercase tracking-widest font-sans">Programs</span>
+                <a href="/si-fellowship" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Fellowship</a>
+                <a href="/labs" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Labs</a>
+                <a href="/sat-school" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Sat School</a>
+              </div>
+              <div className="flex flex-col gap-4">
+                <span className="text-xs text-white/40 uppercase tracking-widest font-sans">Community</span>
+                <a href="/workshops" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Workshops</a>
+                <a href="/clubs" className="font-display text-[20px] text-white hover:text-white/70 transition-colors">Clubs</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="max-w-[1200px] mx-auto w-full mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="font-sans text-[12px] text-white/40">
+            &copy; 2026 Xcelens All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            <a href="/privacy" className="font-sans text-[12px] text-white/40 hover:text-white/60 transition-colors">Privacy</a>
+            <a href="/cookies" className="font-sans text-[12px] text-white/40 hover:text-white/60 transition-colors">Cookies</a>
+          </div>
         </div>
       </footer>
     </section>
