@@ -1,17 +1,24 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { House, User, BookOpen, Mail, GraduationCap, Beaker, Star, Users, Menu, X, ArrowRight, Compass } from 'lucide-react';
-import { motion, AnimatePresence, DOMKeyframesDefinition } from 'framer-motion';
+import { House, User, BookOpen, Mail, GraduationCap, Beaker, Star, Users, Menu, X, ArrowRight, Compass, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const serviceSubItems = [
+  { name: 'Mentis - Mindset Coaching', href: '/services/mentis' },
+  { name: 'Virtus - Skillset Coaching', href: '/services/virtus' },
+  { name: 'Jinsei - Life Coaching', href: '/services/jinsei' },
+];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   const navItems = [
     { name: 'Home', href: '/', icon: <House size={20} /> },
     { name: 'About', href: '/about', icon: <User size={20} /> },
-    { name: 'Services', href: '/services', icon: <Compass size={20} /> },
+    { name: 'Services', href: '/services', icon: <Compass size={20} />, hasDropdown: true },
     { name: 'Labs', href: '/labs', icon: <Beaker size={24} /> },
     { name: 'Fellowship', href: '/si-fellowship', icon: <Star size={24} /> },
     { name: 'Workshops', href: '/workshops', icon: <BookOpen size={20} /> },
@@ -21,7 +28,7 @@ const Navbar = () => {
     { name: 'Contact', href: '/contact', icon: <Mail size={20} /> },
   ];
 
-  // Items visible on Desktop Top Bar (Matching user request)
+  // Items visible on Desktop Top Bar
   const desktopItems = [
     { name: 'Home', href: '/', icon: <House size={14} /> },
     { name: 'About', href: '/about', icon: <User size={14} /> },
@@ -29,6 +36,77 @@ const Navbar = () => {
     { name: 'Contact', href: '/contact', icon: <Mail size={14} /> },
     { name: 'Saturday School', href: '/sat-school', icon: <GraduationCap size={14} /> },
   ];
+
+  const renderMenuItem = (item: typeof navItems[number], idx: number, globalIdx: number) => {
+    if (item.hasDropdown) {
+      return (
+        <div key={item.name}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: globalIdx * 0.1 }}
+          >
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="group flex items-center justify-between w-full text-3xl md:text-4xl font-serif border-b border-white/10 py-4 hover:pl-8 transition-all hover:text-white/60"
+            >
+              <span className="flex items-baseline gap-4">
+                <span className="text-xs font-mono text-white/30 hidden md:inline-block">{String(globalIdx + 1).padStart(2, '0')}</span>
+                {item.name}
+              </span>
+              <ChevronDown size={28} className={`transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+            </button>
+          </motion.div>
+          <AnimatePresence>
+            {servicesOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="pl-8 md:pl-16 pb-4 pt-2 space-y-1">
+                  <a
+                    href={item.href}
+                    className="block text-lg md:text-xl font-sans text-white/40 hover:text-white py-2 transition-colors"
+                  >
+                    All Services
+                  </a>
+                  {serviceSubItems.map((sub) => (
+                    <a
+                      key={sub.href}
+                      href={sub.href}
+                      className="block text-lg md:text-xl font-sans text-white/40 hover:text-white py-2 transition-colors"
+                    >
+                      {sub.name}
+                    </a>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      );
+    }
+
+    return (
+      <motion.a
+        key={item.name}
+        href={item.href}
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: globalIdx * 0.1 }}
+        className="group flex items-center justify-between text-3xl md:text-4xl font-serif border-b border-white/10 py-4 hover:pl-8 transition-all hover:text-white/60"
+      >
+        <span className="flex items-baseline gap-4">
+          <span className="text-xs font-mono text-white/30 hidden md:inline-block">{String(globalIdx + 1).padStart(2, '0')}</span>
+          {item.name}
+        </span>
+        <ArrowRight className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+      </motion.a>
+    );
+  };
 
   return (
     <>
@@ -109,7 +187,7 @@ const Navbar = () => {
                 <span className="font-serif text-xl tracking-tight">Xcelens</span>
               </a>
               <button
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => { setIsMenuOpen(false); setServicesOpen(false); }}
                 className="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 hover:bg-white hover:text-black transition-colors"
               >
                 <X size={24} />
@@ -117,43 +195,17 @@ const Navbar = () => {
             </div>
 
             {/* Menu Links */}
-            <div className="flex-1 flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto w-full">
-              <div className="grid md:grid-cols-2 gap-12">
-                <div className="space-y-4">
-                  {navItems.slice(0, 5).map((item, idx) => ( // First half
-                    <motion.a
-                      key={item.name}
-                      href={item.href}
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="group flex items-center justify-between text-4xl md:text-6xl font-serif border-b border-white/10 py-6 hover:pl-8 transition-all hover:text-white/60"
-                    >
-                      <span className="flex items-baseline gap-4">
-                        <span className="text-xs font-mono text-white/30 hidden md:inline-block">0{idx + 1}</span>
-                        {item.name}
-                      </span>
-                      <ArrowRight className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
-                    </motion.a>
-                  ))}
+            <div className="flex-1 flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto w-full overflow-y-auto">
+              <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+                <div className="space-y-1">
+                  {navItems.slice(0, 5).map((item, idx) =>
+                    renderMenuItem(item, idx, idx)
+                  )}
                 </div>
-                <div className="space-y-4">
-                  {navItems.slice(5).map((item, idx) => ( // Second half
-                    <motion.a
-                      key={item.name}
-                      href={item.href}
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: (idx + 5) * 0.1 }}
-                      className="group flex items-center justify-between text-4xl md:text-6xl font-serif border-b border-white/10 py-6 hover:pl-8 transition-all hover:text-white/60"
-                    >
-                      <span className="flex items-baseline gap-4">
-                        <span className="text-xs font-mono text-white/30 hidden md:inline-block">{String(idx + 6).padStart(2, '0')}</span>
-                        {item.name}
-                      </span>
-                      <ArrowRight className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
-                    </motion.a>
-                  ))}
+                <div className="space-y-1">
+                  {navItems.slice(5).map((item, idx) =>
+                    renderMenuItem(item, idx, idx + 5)
+                  )}
                 </div>
               </div>
             </div>

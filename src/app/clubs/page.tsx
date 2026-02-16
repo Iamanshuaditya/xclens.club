@@ -394,9 +394,6 @@ export default function ClubsPage() {
                                             <span className="z-10">{club.name.charAt(0)}</span>
                                             <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
                                         </div>
-                                        <div className="px-3 py-1 rounded-full bg-gray-100 text-[10px] font-bold tracking-widest uppercase text-zinc-500 group-hover:bg-black group-hover:text-white transition-colors">
-                                            {club.uni}
-                                        </div>
                                     </div>
                                     <h3 className="text-4xl font-serif text-zinc-900 mb-4 leading-tight group-hover:underline decoration-1 underline-offset-4">{club.name}</h3>
                                     <p className="text-zinc-500 font-light text-lg">"{club.feat}"</p>

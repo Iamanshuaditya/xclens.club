@@ -106,7 +106,7 @@ export default async function ServiceDetailPage({
         <div className="relative z-10 max-w-[1248px] mx-auto px-6">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-[14px] font-sans font-medium text-black/60 hover:text-black transition-colors mb-10"
+            className="flex items-center gap-2 text-[14px] font-sans font-medium text-black/60 hover:text-black transition-colors mb-10 w-fit"
           >
             <svg
               width="16"
@@ -126,11 +126,11 @@ export default async function ServiceDetailPage({
             All Services
           </Link>
 
-          <span className="inline-flex items-center rounded-full px-4 py-1.5 bg-black text-white text-[13px] font-sans font-medium mb-6">
+          <span className="inline-block rounded-full px-4 py-1.5 bg-black text-white text-[13px] font-sans font-medium mb-6">
             {service.category}
           </span>
 
-          <h1 className="font-display text-[48px] md:text-[64px] lg:text-[80px] leading-[1.05] tracking-[-0.03em] text-black max-w-[900px]">
+          <h1 className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1.1] tracking-[-0.03em] text-black max-w-[900px] break-words">
             {service.title}
           </h1>
 

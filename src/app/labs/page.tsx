@@ -268,23 +268,25 @@ export default function LabsPage() {
                         Start Building.
                     </motion.h2>
 
-                    <div className="grid md:grid-cols-2 gap-8 text-left mb-16 max-w-2xl mx-auto">
-                        <motion.div
-                            className="p-8 bg-[#FAFAFA] border border-black/5"
+                    <div className="grid md:grid-cols-2 gap-8 text-left mb-16">
+                        <motion.a
+                            href="https://cal.com/flamby/x"
+                            className="p-8 bg-[#FAFAFA] border border-black/5 block"
                             whileHover={{ y: -5 }}
                         >
                             <span className="font-mono text-xs text-black/30 mb-2 block">01</span>
                             <h4 className="font-bold text-lg mb-2">Book a Call</h4>
                             <p className="text-sm text-black/60 font-light">Paid consultation to filter intent. Fee waiver available via referral.</p>
-                        </motion.div>
-                        <motion.div
-                            className="p-8 bg-[#FAFAFA] border border-black/5"
+                        </motion.a>
+                        <motion.a
+                            href="https://cal.com/flamby/x"
+                            className="p-8 bg-[#FAFAFA] border border-black/5 block"
                             whileHover={{ y: -5 }}
                         >
                             <span className="font-mono text-xs text-black/30 mb-2 block">02</span>
                             <h4 className="font-bold text-lg mb-2">Recruit & Build</h4>
                             <p className="text-sm text-black/60 font-light">We assemble the squad and execute immediately.</p>
-                        </motion.div>
+                        </motion.a>
                     </div>
 
                     <motion.a

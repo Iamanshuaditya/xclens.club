@@ -1,9 +1,3 @@
-// components/process-section.tsx
-"use client"
-
-import * as React from "react"
-import { motion, useScroll, useTransform, useSpring } from "framer-motion"
-
 const steps = [
   {
     number: "1",
@@ -28,110 +22,59 @@ const steps = [
 ]
 
 export function ProcessSection() {
-  const containerRef = React.useRef<HTMLDivElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  })
-
-  // Smooth spring animation for natural feel
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  })
-
-  // Transform scroll progress to horizontal movement
-  // -75% means we scroll through 4 cards (showing 1 at a time approximately)
-  const x = useTransform(smoothProgress, [0, 1], ["0%", "-75%"])
-
   return (
-    <section
-      ref={containerRef}
-      className="relative bg-[#f5f5f7]"
-      style={{
-        height: "400vh", // Long scroll distance for smooth animation
+    <section className="relative bg-[#f5f5f7] py-[120px] md:py-[160px]">
+      {/* Background grid */}
+      <div className="absolute inset-0 pointer-events-none" style={{
         backgroundImage: `
           linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
           linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)
         `,
         backgroundSize: '100px 100px'
-      }}
-    >
-      {/* Sticky wrapper */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center">
+      }} />
 
-        {/* Header Content */}
-        <div className="max-w-[1400px] mx-auto px-8 w-full mb-16">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
-            {/* Left: Title */}
-            <div className="space-y-6">
-              <span className="inline-flex items-center px-4 py-1.5 text-sm font-medium text-gray-700 bg-white/70 backdrop-blur-sm rounded-full border border-gray-200/50">
-                Process
-              </span>
-              <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-serif text-gray-900 leading-[1.1] tracking-tight">
-                Ensure Your Goals<br />
-                in Four Steps
-              </h2>
-            </div>
+      <div className="relative max-w-[1200px] mx-auto px-6">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mb-16">
+          <div className="space-y-6">
+            <span className="inline-flex items-center px-4 py-1.5 text-sm font-medium text-gray-700 bg-white/70 backdrop-blur-sm rounded-full border border-gray-200/50">
+              Process
+            </span>
+            <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-serif text-gray-900 leading-[1.1] tracking-tight">
+              Ensure Your Goals<br />
+              in Four Steps
+            </h2>
+          </div>
 
-            {/* Right: Description */}
-            <div className="lg:max-w-[360px] lg:pt-16">
-              <p className="text-gray-500 text-lg leading-relaxed font-light">
-                This four-step path that carried me from uncertainty to unstoppable momentum can do the same for you.
-              </p>
-            </div>
+          <div className="lg:max-w-[360px] lg:pt-16">
+            <p className="text-gray-500 text-lg leading-relaxed font-light">
+              This four-step path that carried me from uncertainty to unstoppable momentum can do the same for you.
+            </p>
           </div>
         </div>
 
-        {/* Horizontal Cards Track */}
-        <div className="relative w-full overflow-visible">
-          <motion.div
-            style={{ x }}
-            className="flex gap-6 pl-8 will-change-transform"
-          >
-            {steps.map((step, index) => (
-              <article
-                key={index}
-                className="flex-shrink-0 w-[420px] bg-[#fafafa]/90 backdrop-blur-sm rounded-[2rem] p-10 border border-white/80 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
-              >
-                <div className="flex items-start gap-4 mb-6">
-                  {/* Number Badge */}
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#f4a261]/20 flex items-center justify-center">
-                    <span className="text-[#e76f51] text-sm font-semibold">
-                      {step.number}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-2xl font-serif text-gray-900 leading-tight pt-0.5">
-                    {step.title}
-                  </h3>
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step, index) => (
+            <article
+              key={index}
+              className="bg-[#fafafa]/90 backdrop-blur-sm rounded-[2rem] p-10 border border-white/80 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
+            >
+              <div className="flex items-start gap-4 mb-6">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#f4a261]/20 flex items-center justify-center">
+                  <span className="text-[#e76f51] text-sm font-semibold">
+                    {step.number}
+                  </span>
                 </div>
-
-                {/* Description */}
-                <p className="text-gray-500 leading-[1.8] text-[15px] pl-12 font-light">
-                  {step.description}
-                </p>
-              </article>
-            ))}
-
-            {/* Spacer for last card */}
-            <div className="flex-shrink-0 w-[200px]" />
-          </motion.div>
-        </div>
-
-        {/* Optional: Progress bar at bottom */}
-        <div className="max-w-[1400px] mx-auto px-8 w-full mt-16">
-          <div className="w-48 h-1 bg-gray-200/50 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-[#f4a261] rounded-full origin-left"
-              style={{
-                scaleX: smoothProgress,
-              }}
-            />
-          </div>
+                <h3 className="text-2xl font-serif text-gray-900 leading-tight pt-0.5">
+                  {step.title}
+                </h3>
+              </div>
+              <p className="text-gray-500 leading-[1.8] text-[15px] pl-12 font-light">
+                {step.description}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
