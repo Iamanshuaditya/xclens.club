@@ -1,25 +1,8 @@
-import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { services } from '@/data/services';
 
 const ServicesSection = () => {
-  const services = [
-    {
-      title: 'Mentis - Mindset Coaching',
-      description: 'Build resilient habits, overcome doubts, and unlock unwavering self-belief.',
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/Yx8HzJ9dJuN8MaCmJEtK79B5u8-4.png',
-    },
-    {
-      title: 'Virtus - Skillset Coaching',
-      description: 'Sharpen deep technical proficiencies, and fast-track your professional growth.',
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/ewAqhKeUdtYR8p81zwehpcpB4ek-5.png',
-    },
-    {
-      title: 'Jinsei - Life Coaching',
-      description: 'Align your priorities, restore balance, and elevate everyday well-being.',
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/LXq27ZG7hrKeXuYWZ2M7w3YAIvM-6.png',
-    },
-  ];
-
   return (
     <section className="relative w-full bg-[#f3f3f3] py-[140px] overflow-hidden" id="services">
       {/* Background Grid Lines */}
@@ -52,15 +35,16 @@ const ServicesSection = () => {
 
           {/* Service Cards Grid - Responsive Columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-            {services.map((service, index) => (
-              <div 
-                key={index} 
+            {services.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
                 className="group relative flex flex-col h-[520px] bg-black rounded-[12px] overflow-hidden transition-transform duration-300 hover:-translate-y-1"
               >
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0 w-full h-full grayscale hover:grayscale-0 transition-all duration-500">
-                  <Image 
-                    src={service.image} 
+                <div className="absolute inset-0 w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500">
+                  <Image
+                    src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover opacity-60"
@@ -77,13 +61,13 @@ const ServicesSection = () => {
                     {service.description}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
           {/* Bottom Button */}
           <div className="flex justify-center mt-12">
-            <a 
+            <a
               href="https://cal.com/flamby/x"
               className="btn-pill bg-black text-white px-8 py-3 hover:opacity-80 transition-opacity"
             >
