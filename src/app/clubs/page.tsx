@@ -377,10 +377,10 @@ export default function ClubsPage() {
 
                     <div className="flex gap-8 overflow-x-auto pb-12 snap-x hide-scrollbar px-2">
                         {[
-                            { name: "FinTech Society", uni: "Christ University", feat: "National Trading League", badge: "🏆 TOP PERFORMER" },
-                            { name: "Design Collective", uni: "NIFT Bengaluru", feat: "Tokyo Design Week Feature", badge: "🎨 MOST CREATIVE" },
-                            { name: "Policy Lab", uni: "Ashoka University", feat: "Municipal Policy Paper", badge: "📜 POLICY AWARD" },
-                            { name: "Robotics Guild", uni: "IIT Delhi", feat: "Drone Swarm Research", badge: "🤖 INNOVATION" }
+                            { name: "FinTech Society", feat: "National Trading League", badge: "🏆 TOP PERFORMER" },
+                            { name: "Design Collective", feat: "Tokyo Design Week Feature", badge: "🎨 MOST CREATIVE" },
+                            { name: "Policy Lab", feat: "Municipal Policy Paper", badge: "📜 POLICY AWARD" },
+                            { name: "Robotics Guild", feat: "Drone Swarm Research", badge: "🤖 INNOVATION" }
                         ].map((club, i) => (
                             <motion.div
                                 key={i}
@@ -418,7 +418,7 @@ export default function ClubsPage() {
                     <div className="space-y-4">
                         {[
                             { q: "Do we need faculty approval?", a: "Yes. Faculty advisors ensure institutional memory and longevity for the club. We provide a Faculty Pitch Deck to help you secure one." },
-                            { q: "Is there a fee?", a: "No. Xcelens is a merit-based network. We invest in you through grants and resources, not the other way around." },
+                            // { q: "Is there a fee?", a: "No. Xcelens is a merit-based network. We invest in you through grants and resources, not the other way around." },
                             { q: "Can we migrate an existing club?", a: "Absolutely. We provide a 'Migration Kit' to upgrade your existing operations to Xcelens standards while retaining your history." },
                             { q: "What resources do we get immediately?", a: "Upon Ratification, you receive the Chapter Zero kit containing branding assets, a notion workspace template, and access to the Xcelens Vault." }
                         ].map((faq, i) => (
@@ -442,13 +442,10 @@ export default function ClubsPage() {
                         <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto">
                             Empower your student body with the world's most advanced community infrastructure.
                         </p>
-                        <div className="flex flex-col sm:flex-row justify-center gap-4">
-                            <button className="px-10 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                        <div className="flex justify-center">
+                            <a href="/partner-as-institution" className="px-10 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition-transform hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                                 Partner As Institution
-                            </button>
-                            <button className="px-10 py-4 border border-white/20 hover:bg-white/10 rounded-full font-medium transition-colors">
-                                Contact Team
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

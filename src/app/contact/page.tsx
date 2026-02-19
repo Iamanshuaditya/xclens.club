@@ -1,5 +1,6 @@
 import Navbar from "@/components/sections/navbar";
 import ContactHero from "@/components/sections/contact-hero";
+import ContactInfo from "@/components/sections/contact-info";
 import ContactForms from "@/components/sections/contact-forms";
 import CtaFooter from "@/components/sections/cta-footer";
 
@@ -8,6 +9,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-background">
       <Navbar />
       <ContactHero />
+      <ContactInfo />
       <ContactForms />
       <CtaFooter />
       

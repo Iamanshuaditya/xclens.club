@@ -348,6 +348,15 @@ export default function SiFellowshipPage() {
                             </div>
                         </div>
                     </div>
+
+                    {/* Fine Print */}
+                    <div className="px-12 md:px-20 pb-12 pt-2 relative z-10 border-t border-white/5">
+                        <div className="space-y-4 text-sm text-white/40 font-light leading-relaxed max-w-4xl">
+                            <p>Office seat in Koramangala worth 30K/month (100K total) and software license for the duration of the fellowship (worth upto 20K) is excluded from this remuneration.</p>
+                            <p>This Remuneration is designed to help subsidize living, operating and set-up costs.</p>
+                            <p>Fellows will be offered assistance (limited) in finding paid commission work, for upto 20% of the working hours. This fellowship requires 55–60 hours work weeks.</p>
+                        </div>
+                    </div>
                 </motion.div>
             </section>
 
