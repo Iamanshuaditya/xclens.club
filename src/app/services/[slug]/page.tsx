@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
+import { Star } from "lucide-react";
 import Navbar from "@/components/sections/navbar";
 import CtaFooter from "@/components/sections/cta-footer";
-import {
-  services,
-  getService,
-  getOtherServices,
-  type ServiceContent,
-} from "@/data/services";
+import { services, getService } from "@/data/services";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -29,48 +23,40 @@ export async function generateMetadata({
   };
 }
 
-function RenderContent({ block }: { block: ServiceContent }) {
-  switch (block.type) {
-    case "paragraph":
-      return (
-        <p className="text-[18px] leading-[1.75] text-[#333] font-sans">
-          {block.text}
-        </p>
-      );
-    case "heading2":
-      return (
-        <h2 className="font-display text-[32px] md:text-[36px] leading-[1.2] tracking-[-0.02em] text-black mt-4">
-          {block.text}
-        </h2>
-      );
-    case "heading3":
-      return (
-        <h3 className="font-display text-[24px] leading-[1.3] tracking-[-0.01em] text-black mt-2">
-          {block.text}
-        </h3>
-      );
-    case "list":
-      return (
-        <ul className="space-y-2 pl-6">
-          {block.items?.map((item, i) => (
-            <li
-              key={i}
-              className="text-[18px] leading-[1.75] text-[#333] font-sans list-disc marker:text-[#999]"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      );
-    case "quote":
-      return (
-        <blockquote className="border-l-[3px] border-black pl-6 py-2">
-          <p className="text-[20px] md:text-[22px] leading-[1.6] text-black font-display italic">
-            {block.text}
-          </p>
-        </blockquote>
-      );
-  }
+function AbstractIllustration({
+  colors,
+}: {
+  colors: { primary: string; secondary: string; tertiary: string };
+}) {
+  return (
+    <div className="relative w-full max-w-[480px] aspect-[5/6] mx-auto lg:mx-0">
+      {/* Gray hatched capsule - back right */}
+      <div
+        className="absolute z-0 w-[55%] h-[90%] rounded-full top-[2%] right-[5%] overflow-hidden"
+        style={{ backgroundColor: colors.tertiary }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255,255,255,0.35) 3px, rgba(255,255,255,0.35) 4.5px)",
+          }}
+        />
+      </div>
+
+      {/* Dark brown capsule - middle left */}
+      <div
+        className="absolute z-10 w-[50%] h-[88%] rounded-full top-[6%] left-[2%]"
+        style={{ backgroundColor: colors.primary }}
+      />
+
+      {/* Orange capsule - front center */}
+      <div
+        className="absolute z-20 w-[48%] h-[82%] rounded-full top-[10%] left-[18%]"
+        style={{ backgroundColor: colors.secondary }}
+      />
+    </div>
+  );
 }
 
 export default async function ServiceDetailPage({
@@ -85,159 +71,134 @@ export default async function ServiceDetailPage({
     notFound();
   }
 
-  const otherServices = getOtherServices(slug);
-
   return (
     <main className="min-h-screen bg-[#F2F3F4]">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full pt-[140px] md:pt-[180px] pb-[80px] md:pb-[100px] bg-[#F2F3F4]">
-        <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
-          <div className="max-w-[1248px] mx-auto h-full flex justify-between px-6">
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-          </div>
-        </div>
-
-        <div className="relative z-10 max-w-[1248px] mx-auto px-6">
-          <Link
-            href="/services"
-            className="flex items-center gap-2 text-[14px] font-sans font-medium text-black/60 hover:text-black transition-colors mb-10 w-fit"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              className="rotate-180"
-            >
-              <path
-                d="M6 3L11 8L6 13"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            All Services
-          </Link>
-
-          <span className="inline-block rounded-full px-4 py-1.5 bg-black text-white text-[13px] font-sans font-medium mb-6">
-            {service.category}
-          </span>
-
-          <h1 className="font-display text-[36px] md:text-[52px] lg:text-[64px] leading-[1.1] tracking-[-0.03em] text-black max-w-[900px] break-words">
-            {service.title}
+      <section className="w-full pt-[140px] md:pt-[180px] pb-[48px] md:pb-[64px] bg-[#F2F3F4]">
+        <div className="max-w-[1200px] mx-auto px-6 text-center">
+          <h1 className="font-display text-[40px] md:text-[56px] lg:text-[72px] leading-[1.05] tracking-[-0.03em] text-black">
+            {service.shortTitle}
           </h1>
-
-          <p className="font-sans text-[18px] leading-[1.6] text-[#666666] max-w-[540px] mt-6">
-            {service.description}
+          <p className="font-sans text-[15px] md:text-[17px] leading-[1.6] text-[#999] mt-4 max-w-[440px] mx-auto">
+            {service.tagline}
           </p>
+          <div className="w-[72px] h-px bg-black/12 mx-auto mt-8" />
         </div>
       </section>
 
-      {/* Hero Image */}
-      <section className="relative w-full">
-        <div className="max-w-[1248px] mx-auto px-6">
-          <div className="relative w-full aspect-[16/9] md:aspect-[2.2/1] rounded-[16px] overflow-hidden">
-            <Image
-              src={service.image}
-              alt={service.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 1200px"
-            />
+      {/* Overview Section */}
+      <section className="w-full py-[48px] md:py-[80px] bg-[#F2F3F4]">
+        <div className="max-w-[1100px] mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <AbstractIllustration colors={service.illustrationColors} />
+            <div>
+              <h2 className="font-display text-[32px] md:text-[44px] leading-[1.1] tracking-[-0.02em] text-black mb-5">
+                Overview
+              </h2>
+              <p className="font-sans text-[15px] md:text-[16px] leading-[1.8] text-[#666]">
+                {service.overview}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Content Body */}
-      <section className="relative w-full py-[80px] md:py-[120px] bg-[#F2F3F4]">
-        <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
-          <div className="max-w-[1248px] mx-auto h-full flex justify-between px-6">
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
+      {/* Benefits Section */}
+      <section className="w-full py-[72px] md:py-[100px] bg-[#F2F3F4]">
+        <div className="max-w-[1060px] mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-[36px] md:text-[52px] leading-[1.1] tracking-[-0.02em] text-black">
+              Benefits
+            </h2>
+            <p className="font-sans text-[14px] md:text-[15px] leading-[1.6] text-[#999] mt-4 max-w-[460px] mx-auto">
+              {service.benefitsSubtitle}
+            </p>
           </div>
-        </div>
 
-        <div className="relative z-10 max-w-[720px] mx-auto px-6">
-          <div className="flex flex-col gap-6">
-            {service.content.map((block, index) => (
-              <RenderContent key={index} block={block} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+            {service.benefits.map((benefit, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center text-center"
+              >
+                {/* Number badge */}
+                <div
+                  className="w-[52px] h-[52px] rounded-lg flex items-center justify-center mb-6"
+                  style={{
+                    backgroundColor: `${service.illustrationColors.secondary}25`,
+                  }}
+                >
+                  <span
+                    className="font-display text-[26px] leading-none"
+                    style={{
+                      color: service.illustrationColors.secondary,
+                    }}
+                  >
+                    {i + 1}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="font-display text-[18px] md:text-[20px] font-semibold leading-[1.2] text-black mb-1.5">
+                  {benefit.title}
+                </h3>
+
+                {/* Olive underline */}
+                <div className="w-12 h-[2px] bg-[#6B7A5A] mb-5" />
+
+                {/* Description */}
+                <p className="font-sans text-[14px] leading-[1.75] text-[#999]">
+                  {benefit.description}
+                </p>
+              </div>
             ))}
           </div>
-
-          {/* CTA */}
-          <div className="mt-16 pt-12 border-t border-black/10">
-            <p className="font-sans text-[18px] text-[#666] mb-6">
-              Ready to get started?
-            </p>
-            <a
-              href="https://cal.com/flamby/x"
-              className="inline-flex items-center gap-2 bg-black text-white px-8 py-3 rounded-full text-[15px] font-sans font-medium hover:opacity-80 transition-opacity"
-            >
-              Book a session
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* Other Services */}
-      <section className="relative w-full py-[100px] md:py-[120px] bg-[#f3f3f3] overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
-          <div className="max-w-[1248px] mx-auto h-full flex justify-between px-6">
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
-            <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
+      {/* Testimonials Section */}
+      <section className="w-full py-[72px] md:py-[100px] bg-[#EAEBEC]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="font-display text-[36px] md:text-[52px] leading-[1.1] tracking-[-0.02em] text-black">
+              What Clients Say
+            </h2>
+            <p className="font-sans text-[14px] md:text-[15px] leading-[1.6] text-[#999] mt-4 max-w-[460px] mx-auto">
+              {service.testimonialsSubtitle}
+            </p>
           </div>
-        </div>
 
-        <div className="relative z-10 max-w-[1248px] mx-auto px-6">
-          <h2 className="font-display text-[48px] md:text-[56px] leading-[1.1] tracking-[-0.03em] text-black mb-12">
-            Explore Our Other Services
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {otherServices.map((other) => (
-              <Link
-                key={other.slug}
-                href={`/services/${other.slug}`}
-                className="group relative block h-[400px] md:h-[450px] rounded-[12px] overflow-hidden bg-black"
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+            {service.testimonials.map((testimonial, i) => (
+              <article
+                key={i}
+                className="bg-white/90 backdrop-blur-sm rounded-[16px] md:rounded-[24px] p-4 md:p-8 flex flex-col justify-between border border-[#E5E5E5]/60 shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
               >
-                <div className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-500">
-                  <Image
-                    src={other.image}
-                    alt={other.title}
-                    fill
-                    className="object-cover opacity-60"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                  <div className="space-y-3">
-                    <span className="block text-[12px] font-semibold uppercase tracking-[0.05em] text-white/90 font-sans">
-                      {other.category}
-                    </span>
-                    <h3 className="font-display text-[24px] text-white leading-[1.2] tracking-[-0.01em]">
-                      {other.title}
-                    </h3>
-                    <p className="text-[16px] text-white/70 font-sans">
-                      {other.description}
-                    </p>
+                <div>
+                  {/* Stars */}
+                  <div className="flex gap-0.5 md:gap-1 mb-3 md:mb-5">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <Star
+                        key={j}
+                        size={13}
+                        className="fill-[#A0AA90] text-[#A0AA90] md:w-[15px] md:h-[15px]"
+                      />
+                    ))}
                   </div>
+
+                  {/* Quote */}
+                  <p className="font-sans text-[12px] md:text-[14px] leading-[1.6] md:leading-[1.75] text-[#999]">
+                    {testimonial.quote}
+                  </p>
                 </div>
-              </Link>
+
+                {/* Name */}
+                <p className="font-sans text-[12px] md:text-[14px] font-medium text-black mt-4 md:mt-8">
+                  {testimonial.name}
+                </p>
+              </article>
             ))}
           </div>
         </div>
