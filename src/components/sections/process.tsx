@@ -33,7 +33,7 @@ export function ProcessSection() {
         backgroundSize: '100px 100px'
       }} />
 
-      <div className="relative max-w-[1200px] mx-auto px-6">
+      <div className="relative max-w-[1400px] mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mb-16">
           <div className="space-y-6">
@@ -58,7 +58,7 @@ export function ProcessSection() {
           {steps.map((step, index) => (
             <article
               key={index}
-              className="bg-[#fafafa]/90 backdrop-blur-sm rounded-[2rem] p-10 border border-white/80 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
+              className="bg-[#fafafa]/90 backdrop-blur-sm rounded-[2rem] p-8 border border-white/80 shadow-[0_4px_30px_rgba(0,0,0,0.03)] w-full min-w-0"
             >
               <div className="flex items-start gap-4 mb-6">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#f4a261]/20 flex items-center justify-center">

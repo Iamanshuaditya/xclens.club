@@ -196,7 +196,7 @@ const FramerBook = ({ src, width, height }: { src: string, width: number, height
 
 const SatSchoolHero = () => {
   return (
-    <section className="relative w-full bg-black overflow-hidden flex flex-col justify-center min-h-screen">
+    <section className="relative w-full bg-black overflow-hidden flex flex-col justify-center min-h-screen" style={{ isolation: 'isolate' }}>
 
       {/* Container matching "Hero" wrapper layout */}
       <div className="container mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-0 relative z-10 items-center h-full pt-20">
@@ -274,15 +274,15 @@ const SatSchoolHero = () => {
 
         {/* Right Column - 3D Books Animation */}
         <div
-          className="flex items-center justify-center h-[500px] lg:h-[800px] w-full relative perspective-container"
-          style={{ perspective: '1400px' }}
+          className="relative h-[500px] lg:h-[700px] w-full"
         >
-          {/* Arm Wrap - The main 3D oriented container */}
+          {/* Arm Wrap - The main 3D oriented container, centered in right column */}
           <div
-            className="relative w-0 h-0"
+            className="absolute top-1/2 left-1/2 w-0 h-0"
             style={{
               transformStyle: 'preserve-3d',
-              transform: 'scale(0.7) rotate(47deg) rotateX(29deg) rotateY(-70deg)'
+              perspective: '1400px',
+              transform: 'scale(0.5) rotateX(55deg)'
             }}
           >
             {/* ARMS - The spinning element */}
@@ -291,7 +291,7 @@ const SatSchoolHero = () => {
               style={{
                 transformStyle: 'preserve-3d',
               }}
-              animate={{ rotate: 360 }}
+              animate={{ rotateZ: 360 }}
               transition={{
                 duration: 60,
                 ease: "linear",

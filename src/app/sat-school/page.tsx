@@ -15,7 +15,7 @@ export default function SatSchoolPage() {
           <div className="lg:col-span-6">
             {/* The text content is already in SatSchoolHero, 
                 but BioQuote can be placed here if it's separate */}
-            <BioQuote />
+            {/* <BioQuote /> */}
           </div>
 
         </div>
