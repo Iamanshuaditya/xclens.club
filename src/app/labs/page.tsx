@@ -233,7 +233,7 @@ export default function LabsPage() {
                     </motion.div>
 
                     <motion.div
-                        className="text-center p-8 scale-105 border-x border-black/5 bg-[#F9F9F9]"
+                        className="text-center p-8 scale-105 border border-black/8 rounded-xl bg-transparent"
                         initial={{ y: 20, opacity: 0 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         viewport={{ once: true }}
@@ -257,7 +257,7 @@ export default function LabsPage() {
             </section>
 
             {/* CALL TO ACTION */}
-            <section className="bg-white border-t border-black/5 py-32 px-6">
+            <section className="bg-[#FDFBF7] border-t border-black/5 py-32 px-6">
                 <div className="max-w-4xl mx-auto text-center">
                     <motion.h2
                         className="text-6xl md:text-8xl font-serif mb-12"
@@ -271,7 +271,7 @@ export default function LabsPage() {
                     <div className="grid md:grid-cols-2 gap-8 text-left mb-16">
                         <motion.a
                             href="https://cal.com/flamby/x"
-                            className="p-8 bg-[#FAFAFA] border border-black/5 block"
+                            className="p-8 bg-[#F7F5F0] border border-black/5 block"
                             whileHover={{ y: -5 }}
                         >
                             <span className="font-mono text-xs text-black/30 mb-2 block">01</span>
@@ -280,7 +280,7 @@ export default function LabsPage() {
                         </motion.a>
                         <motion.a
                             href="https://cal.com/flamby/x"
-                            className="p-8 bg-[#FAFAFA] border border-black/5 block"
+                            className="p-8 bg-[#F7F5F0] border border-black/5 block"
                             whileHover={{ y: -5 }}
                         >
                             <span className="font-mono text-xs text-black/30 mb-2 block">02</span>

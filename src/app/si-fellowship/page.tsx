@@ -75,17 +75,21 @@ export default function SiFellowshipPage() {
                         animate={{ scaleX: 1 }}
                         transition={{ delay: 1, duration: 0.8, ease: "circOut" }}
                     >
-                        <div className="text-center md:text-left px-8 md:border-r border-black/10 w-full md:w-1/3">
+                        <div className="text-center md:text-left px-8 md:border-r border-black/10 w-full md:w-1/4">
                             <span className="block text-xs font-medium uppercase tracking-widest text-black/40 mb-2">Location</span>
                             <span className="text-xl font-serif">Bengaluru, IN</span>
                         </div>
-                        <div className="text-center px-8 md:border-r border-black/10 w-full md:w-1/3">
+                        <div className="text-center px-8 md:border-r border-black/10 w-full md:w-1/4">
                             <span className="block text-xs font-medium uppercase tracking-widest text-black/40 mb-2">Duration</span>
                             <span className="text-xl font-serif">100 Days</span>
                         </div>
-                        <div className="text-center md:text-right px-8 w-full md:w-1/3">
+                        <div className="text-center px-8 md:border-r border-black/10 w-full md:w-1/4">
+                            <span className="block text-xs font-medium uppercase tracking-widest text-black/40 mb-2">Season</span>
+                            <span className="text-xl font-serif">Summer</span>
+                        </div>
+                        <div className="text-center md:text-right px-8 w-full md:w-1/4">
                             <span className="block text-xs font-medium uppercase tracking-widest text-black/40 mb-2">Start Date</span>
-                            <span className="text-xl font-serif">Jan 01, 2026</span>
+                            <span className="text-xl font-serif">May 01, 2026</span>
                         </div>
                     </motion.div>
 
