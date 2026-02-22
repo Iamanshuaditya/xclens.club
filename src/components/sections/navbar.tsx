@@ -48,7 +48,7 @@ const Navbar = () => {
           >
             <button
               onClick={() => setServicesOpen(!servicesOpen)}
-              className="group flex items-center justify-between w-full text-3xl md:text-4xl font-serif border-b border-white/10 py-4 hover:pl-8 transition-all hover:text-white/60"
+              className="group flex items-center justify-between w-full text-2xl md:text-4xl font-serif border-b border-white/10 py-3 md:py-4 hover:pl-8 transition-all hover:text-white/60"
             >
               <span className="flex items-baseline gap-4">
                 <span className="text-xs font-mono text-white/30 hidden md:inline-block">{String(globalIdx + 1).padStart(2, '0')}</span>
@@ -97,7 +97,7 @@ const Navbar = () => {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: globalIdx * 0.1 }}
-        className="group flex items-center justify-between text-3xl md:text-4xl font-serif border-b border-white/10 py-4 hover:pl-8 transition-all hover:text-white/60"
+        className="group flex items-center justify-between text-2xl md:text-4xl font-serif border-b border-white/10 py-3 md:py-4 hover:pl-8 transition-all hover:text-white/60"
       >
         <span className="flex items-baseline gap-4">
           <span className="text-xs font-mono text-white/30 hidden md:inline-block">{String(globalIdx + 1).padStart(2, '0')}</span>
@@ -195,7 +195,7 @@ const Navbar = () => {
             </div>
 
             {/* Menu Links */}
-            <div className="flex-1 flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto w-full overflow-y-auto">
+            <div className="flex-1 px-6 md:px-12 max-w-7xl mx-auto w-full overflow-y-auto py-6 md:py-12 flex flex-col md:justify-center">
               <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                 <div className="space-y-1">
                   {navItems.slice(0, 5).map((item, idx) =>
