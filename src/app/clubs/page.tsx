@@ -208,8 +208,8 @@ export default function ClubsPage() {
                                             <Sparkles size={20} className="text-white" />
                                         </div>
                                         <div>
-                                            <div className="font-serif text-2xl tracking-wide">Xcelens Elite</div>
-                                            <div className="text-[10px] uppercase tracking-[0.2em] text-white/40">Invitation Only</div>
+                                            <div className="font-serif text-2xl tracking-wide">Founding Charter</div>
+                                            <div className="text-[10px] uppercase tracking-[0.2em] text-white/40">Limited Slots Open</div>
                                         </div>
                                     </div>
                                     <Globe className="text-white/20" />
