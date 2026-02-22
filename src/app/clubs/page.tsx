@@ -218,8 +218,8 @@ export default function ClubsPage() {
                                 <div className="space-y-8 relative z-10">
                                     <div>
                                         <div className="flex justify-between items-end mb-2">
-                                            <span className="text-sm text-white/40 font-medium">Seed Pool</span>
-                                            <span className="text-2xl font-mono">$10,000</span>
+                                            <span className="text-sm text-white/40 font-medium">Seed Grant Pool</span>
+                                            <span className="text-2xl font-mono">$2,000</span>
                                         </div>
                                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                                             <div className="h-full w-[35%] bg-white rounded-full relative">
@@ -230,8 +230,8 @@ export default function ClubsPage() {
 
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                                            <div className="text-3xl font-serif mb-1">5</div>
-                                            <div className="text-[10px] uppercase tracking-wider text-white/40">Cities Targeted</div>
+                                            <div className="text-3xl font-serif mb-1">10</div>
+                                            <div className="text-[10px] uppercase tracking-wider text-white/40">Founding Chapter Slots</div>
                                         </div>
                                         <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
                                             <div className="text-3xl font-serif mb-1">200+</div>
