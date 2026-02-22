@@ -5,10 +5,7 @@ export default function CtaFooter() {
   const ctaBgImage = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/d2uBbkp0Rt0I4a1wRFyW2hKrQE-12.jpg";
 
   return (
-    <section className="relative w-full min-h-[100vh] flex flex-col overflow-hidden">
-      {/* Bleed gradient - smooth transition from previous section */}
-      <div className="absolute top-0 left-0 right-0 h-20 z-[2] bg-gradient-to-b from-[#F5F5F5] to-transparent pointer-events-none" />
-
+    <section className="relative w-full flex flex-col overflow-hidden">
       {/* Background Image - spans entire section */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -19,13 +16,13 @@ export default function CtaFooter() {
           priority
         />
         {/* Top soft gradient for blending */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F2F3F4] via-transparent via-30% to-transparent" />
         {/* Bottom heavy black gradient for footer legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 via-40% to-transparent" />
       </div>
 
       {/* CTA Content - centered in upper area */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-32 md:py-44">
         <div className="max-w-[800px] flex flex-col items-center gap-8">
           <h2 className="font-display text-white text-[40px] md:text-[64px] leading-[1.1] tracking-[-0.02em]">
             Start your journey<br />toward lasting growth.
@@ -41,7 +38,7 @@ export default function CtaFooter() {
       </div>
 
       {/* Footer Content - sitting on the dark gradient at bottom */}
-      <footer className="relative z-10 w-full px-6 md:px-12 pb-12 pt-24">
+      <footer className="relative z-10 w-full px-6 md:px-12 pb-12 pt-16">
         <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0 items-start">
           {/* Contact Information */}
           <div className="flex flex-col gap-4">
