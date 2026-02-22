@@ -35,7 +35,7 @@ const benefits = [
 
 export default function WhyChooseMe() {
   return (
-    <section className="relative w-full bg-[#F5F5F5] editorial-spacing overflow-hidden">
+    <section className="relative w-full bg-white py-[100px] overflow-hidden">
       {/* Background Vertical Grid Lines */}
       <div className="absolute inset-0 flex justify-between max-w-[1200px] mx-auto px-6 pointer-events-none z-0">
         <div className="w-[1px] h-full bg-[#E0E0E0]/50"></div>
@@ -45,34 +45,34 @@ export default function WhyChooseMe() {
         <div className="w-[1px] h-full bg-[#E0E0E0]/50"></div>
       </div>
 
-      <div className="container relative z-10">
-        <div className="flex flex-col gap-[80px]">
-          {/* Section Header */}
-          <div className="max-w-[1200px]">
+      <div className="container relative z-10 max-w-[1200px] mx-auto px-6">
+        <div className="flex flex-col gap-[60px]">
+          {/* Section Header - Centered */}
+          <div className="text-center">
             <h2 className="font-display text-[48px] leading-[1.1] text-black">
               Why Choose Neelmani?
             </h2>
           </div>
 
-          {/* Benefits Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-[120px] gap-y-[60px]">
+          {/* Benefits Grid - 3 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-[60px] gap-y-[50px]">
             {benefits.map((benefit, index) => (
-              <div 
+              <div
                 key={index}
-                className="flex flex-col gap-4"
+                className="flex flex-col items-center text-center gap-3"
               >
-                {/* Number Label */}
-                <span className="font-sans text-[16px] leading-[1.6] text-[#666666]">
+                {/* Number Label - Orange */}
+                <span className="font-sans text-[14px] font-semibold text-[#D4772C]">
                   {benefit.number}
                 </span>
-                
+
                 {/* Benefit Headline */}
-                <h3 className="font-display text-[24px] leading-[1.2] text-black">
+                <h3 className="font-display text-[22px] leading-[1.2] text-black">
                   {benefit.title}
                 </h3>
-                
+
                 {/* Benefit Description */}
-                <p className="font-sans text-[16px] leading-[1.6] text-[#666666] max-w-[500px]">
+                <p className="font-sans text-[14px] leading-[1.6] text-[#666666] max-w-[280px]">
                   {benefit.description}
                 </p>
               </div>

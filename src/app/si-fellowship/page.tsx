@@ -195,7 +195,7 @@ export default function SiFellowshipPage() {
                         viewport={{ once: true }}
                     >
                         <h2 className="text-5xl md:text-6xl font-serif">The Program Era</h2>
-                        <span className="text-sm font-mono text-black/40">Cohort 1 • Jan 26</span>
+                        <span className="text-sm font-mono text-black/40">Cohort 1 • May &apos;26</span>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
@@ -316,6 +316,20 @@ export default function SiFellowshipPage() {
                                         <span>Variable Bonus</span>
                                         <span className="font-mono">2k - 10k INR</span>
                                     </div>
+                                    <div className="h-[1px] w-full bg-white/10 my-2"></div>
+                                    <div className="text-[10px] uppercase tracking-widest text-white/30 pt-1">Excluded from remuneration</div>
+                                    <div className="flex justify-between items-center text-sm text-white/40 pt-2">
+                                        <span>Office Seat (Koramangala)</span>
+                                        <span className="font-mono">30K/mo (~1L total)</span>
+                                    </div>
+                                    <div className="flex justify-between items-center text-sm text-white/40">
+                                        <span>Software Licenses</span>
+                                        <span className="font-mono">upto 20K</span>
+                                    </div>
+                                </div>
+                                <div className="mt-4 space-y-1.5 text-xs text-white/35 leading-relaxed">
+                                    <p>This remuneration is designed to help subsidize living, operating and set-up costs.</p>
+                                    <p>Fellows will be offered assistance (limited) in finding paid commission work, for upto 20% of the working hours. This fellowship requires 55–60 hour work weeks.</p>
                                 </div>
                             </div>
                         </div>
@@ -349,14 +363,6 @@ export default function SiFellowshipPage() {
                         </div>
                     </div>
 
-                    {/* Fine Print */}
-                    <div className="px-12 md:px-20 pb-12 pt-2 relative z-10 border-t border-white/5">
-                        <div className="space-y-4 text-sm text-white/40 font-light leading-relaxed max-w-4xl">
-                            <p>Office seat in Koramangala worth 30K/month (100K total) and software license for the duration of the fellowship (worth upto 20K) is excluded from this remuneration.</p>
-                            <p>This Remuneration is designed to help subsidize living, operating and set-up costs.</p>
-                            <p>Fellows will be offered assistance (limited) in finding paid commission work, for upto 20% of the working hours. This fellowship requires 55–60 hours work weeks.</p>
-                        </div>
-                    </div>
                 </motion.div>
             </section>
 

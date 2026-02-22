@@ -51,33 +51,33 @@ const AboutOverview = () => {
               </div>
 
               {/* Numerical Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-3 gap-8">
                 {/* Years Experience */}
-                <div className="flex flex-col gap-2">
-                  <span className="font-display text-[64px] leading-[1] text-black">
+                <div className="flex flex-col items-center gap-2">
+                  <span className="font-display text-[48px] leading-[1] text-[#D4772C]">
                     8
                   </span>
-                  <span className="font-sans text-[12px] font-medium uppercase tracking-[0.05em] text-[#666666]">
+                  <span className="font-sans text-[11px] font-medium uppercase tracking-[0.05em] text-[#666666]">
                     Years Experience
                   </span>
                 </div>
 
                 {/* Group Sessions */}
-                <div className="flex flex-col gap-2">
-                  <span className="font-display text-[64px] leading-[1] text-black">
+                <div className="flex flex-col items-center gap-2">
+                  <span className="font-display text-[48px] leading-[1] text-[#D4772C]">
                     7
                   </span>
-                  <span className="font-sans text-[12px] font-medium uppercase tracking-[0.05em] text-[#666666]">
+                  <span className="font-sans text-[11px] font-medium uppercase tracking-[0.05em] text-[#666666]">
                     Group Sessions
                   </span>
                 </div>
 
                 {/* Private Sessions */}
-                <div className="flex flex-col gap-2">
-                  <span className="font-display text-[64px] leading-[1] text-black">
+                <div className="flex flex-col items-center gap-2">
+                  <span className="font-display text-[48px] leading-[1] text-[#D4772C]">
                     50+
                   </span>
-                  <span className="font-sans text-[12px] font-medium uppercase tracking-[0.05em] text-[#666666]">
+                  <span className="font-sans text-[11px] font-medium uppercase tracking-[0.05em] text-[#666666]">
                     Private Sessions
                   </span>
                 </div>

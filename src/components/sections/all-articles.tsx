@@ -1,65 +1,13 @@
-import React from 'react';
 import Image from 'next/image';
-
-interface Article {
-  title: string;
-  category: string;
-  date: string;
-  image: string;
-  href: string;
-}
-
-const articles: Article[] = [
-  {
-    title: "Jinsei — Live Your Best Life",
-    category: "Life Skills",
-    date: "Oct 21, 2025",
-    image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/o3eXkdKDhbgtXA5BP7lNt5KoHkc-2.jpg",
-    href: "/blog/jinsei"
-  },
-  {
-    title: "What Happens at a Xcelens Session - An activity explained",
-    category: "Team",
-    date: "Aug 11, 2025",
-    image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/I1i1aH3cI6Ef79GFYgyxuigzAsc-3.jpg",
-    href: "/blog/mocksession"
-  },
-  {
-    title: "Why Every Young Person Needs a Pentafecta",
-    category: "Personal Well-Being",
-    date: "Oct 21, 2023",
-    image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/A5JxusJLEIR79cqLLnjbM30AZcQ-4.jpg",
-    href: "/blog/pentafecta2"
-  },
-  {
-    title: "Make your own Wiki",
-    category: "Habits",
-    date: "Feb 23, 2025",
-    image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/wxecdceNbmK8M4AhyEEcfzd9U-5.jpg",
-    href: "/blog/wiki"
-  },
-  {
-    title: "Mastering Team Building to Achieve Breakthrough Results",
-    category: "Team",
-    date: "Mar 2, 2025",
-    image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/p0TCoZkjPviXzZqzl2zrPUgbs-6.png",
-    href: "/blog/pentafecta"
-  },
-  {
-    title: "Igniting Unshakable Confidence in Your Daily Life",
-    category: "Mindset",
-    date: "Apr 1, 2025",
-    image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/Iu4fZyD4vuzchpsdq4hW8NWDHc-7.png",
-    href: "/blog/confidence"
-  }
-];
+import Link from 'next/link';
+import { blogPosts } from '@/data/blog-posts';
 
 const AllArticles = () => {
   return (
     <section className="relative w-full py-[120px] bg-[#F5F5F5] overflow-hidden">
-      {/* Decorative Grid Lines Overlay (Positioned to match global layout) */}
+      {/* Decorative Grid Lines Overlay */}
       <div className="absolute inset-x-0 top-0 bottom-0 pointer-events-none z-0 hidden lg:block">
-        <div className="container mx-auto h-full flex justify-between px-0">
+        <div className="max-w-[1248px] mx-auto h-full flex justify-between px-6">
           <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
           <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
           <div className="w-px h-full bg-[rgba(0,0,0,0.05)]" />
@@ -68,7 +16,7 @@ const AllArticles = () => {
         </div>
       </div>
 
-      <div className="container relative z-10 px-6 lg:px-0 max-w-[1240px]">
+      <div className="container relative z-10 mx-auto px-6 max-w-[1248px]">
         {/* Section Heading */}
         <div className="mb-12">
           <h2 className="font-display text-[64px] leading-[1.1] tracking-[-0.03em] text-black">
@@ -76,13 +24,13 @@ const AllArticles = () => {
           </h2>
         </div>
 
-        {/* Responsive Grid */}
+        {/* 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {articles.map((article, index) => (
-            <a 
-              key={index} 
-              href={article.href}
-              className="group article-card block h-[450px] relative overflow-hidden rounded-[12px] bg-neutral-200"
+          {blogPosts.map((article) => (
+            <Link
+              key={article.slug}
+              href={`/blog/${article.slug}`}
+              className="group block h-[450px] relative overflow-hidden rounded-[12px] bg-neutral-200"
             >
               {/* Image Background */}
               <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105">
@@ -95,21 +43,22 @@ const AllArticles = () => {
                 />
               </div>
 
-              {/* Text Overlay Gradient */}
-              <div className="article-card-overlay bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-[rgba(0,0,0,0.3)] to-transparent">
+              {/* Gradient + Text Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
                 <div className="flex flex-col gap-2">
-                  <span className="category-tag text-[12px] font-semibold text-[rgba(255,255,255,0.9)] uppercase tracking-[0.05em]">
+                  <span className="inline-block w-fit px-2.5 py-1 bg-white/15 backdrop-blur-sm rounded text-[12px] font-semibold text-white/90 uppercase tracking-[0.05em]">
                     {article.category}
                   </span>
                   <h3 className="font-display text-[24px] leading-[1.2] tracking-[-0.01em] text-white">
                     {article.title}
                   </h3>
-                  <span className="text-[14px] font-normal text-[rgba(255,255,255,0.7)]">
+                  <span className="text-[14px] font-normal text-white/70">
                     {article.date}
                   </span>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

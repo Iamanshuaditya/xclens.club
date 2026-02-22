@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Workflow } from 'lucide-react';
 
 const GuidedCoaching = () => {
   return (
@@ -13,8 +14,8 @@ const GuidedCoaching = () => {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 max-w-[1200px]">
-        {/* Section Heading */}
-        <div className="mb-20 max-w-[800px]">
+        {/* Section Heading - Centered */}
+        <div className="mb-20 text-center">
           <h2 className="font-display text-[48px] leading-[1.1] text-black tracking-[-0.02em]">
             Gain Real Results with Guided Coaching
           </h2>
@@ -37,81 +38,36 @@ const GuidedCoaching = () => {
           </div>
 
           {/* Right Side: Framework Points */}
-          <div className="lg:col-span-7 flex flex-col gap-12 pt-4">
+          <div className="lg:col-span-7 flex flex-col gap-16 pt-4">
             {/* Framework Item 1 */}
-            <div className="group flex flex-col gap-4 max-w-[480px]">
+            <div className="flex flex-col gap-4 max-w-[520px]">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm border border-border">
-                  <svg 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="text-black"
-                  >
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
-                </div>
+                <Workflow size={28} strokeWidth={1.5} className="text-[#999999] flex-shrink-0" />
                 <h3 className="font-display text-[24px] text-black leading-tight">Clarity Framework</h3>
               </div>
-              <p className="font-sans text-[16px] text-[#666666] leading-[1.6] pl-14">
+              <p className="font-sans text-[16px] text-[#999999] leading-[1.6]">
                 A clear roadmap that turns your vision into simple, achievable milestones.
               </p>
             </div>
 
             {/* Framework Item 2 */}
-            <div className="group flex flex-col gap-4 max-w-[480px]">
+            <div className="flex flex-col gap-4 max-w-[520px]">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm border border-border">
-                  <svg 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="text-black"
-                  >
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
-                </div>
+                <Workflow size={28} strokeWidth={1.5} className="text-[#999999] flex-shrink-0" />
                 <h3 className="font-display text-[24px] text-black leading-tight">Skill Building</h3>
               </div>
-              <p className="font-sans text-[16px] text-[#666666] leading-[1.6] pl-14">
+              <p className="font-sans text-[16px] text-[#999999] leading-[1.6]">
                 Focused exercises, tools and tactics to boost skills and build confidence.
               </p>
             </div>
 
             {/* Framework Item 3 */}
-            <div className="group flex flex-col gap-4 max-w-[480px]">
+            <div className="flex flex-col gap-4 max-w-[520px]">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm border border-border">
-                  <svg 
-                    width="20" 
-                    height="20" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className="text-black"
-                  >
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                  </svg>
-                </div>
+                <Workflow size={28} strokeWidth={1.5} className="text-[#999999] flex-shrink-0" />
                 <h3 className="font-display text-[24px] text-black leading-tight">Momentum Maintenance</h3>
               </div>
-              <p className="font-sans text-[16px] text-[#666666] leading-[1.6] pl-14">
+              <p className="font-sans text-[16px] text-[#999999] leading-[1.6]">
                 Support through updates, to keep you moving forward and building momentum.
               </p>
             </div>

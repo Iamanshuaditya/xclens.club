@@ -100,7 +100,7 @@ export default async function BlogDetailPage({
       <Navbar />
 
       {/* Introduction / Hero Section */}
-      <section className="relative w-full pt-[140px] md:pt-[180px] pb-[80px] md:pb-[100px] bg-[#F2F3F4]">
+      <section className="relative z-10 w-full pt-[140px] md:pt-[180px] pb-[80px] md:pb-[100px] bg-[#F2F3F4]">
         {/* Grid Lines */}
         <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
           <div className="max-w-[1248px] mx-auto h-full flex justify-between px-6">
@@ -156,24 +156,23 @@ export default async function BlogDetailPage({
         </div>
       </section>
 
-      {/* Hero Image */}
-      <section className="relative w-full">
-        <div className="max-w-[1248px] mx-auto px-6">
-          <div className="relative w-full aspect-[16/9] md:aspect-[2.2/1] rounded-[16px] overflow-hidden">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 1200px"
-            />
-          </div>
-        </div>
+      {/* Hero Image - Full Width Sticky */}
+      <section className="sticky top-0 w-full h-[75vh] md:h-screen z-0 overflow-hidden">
+        <Image
+          src={post.image}
+          alt={post.title}
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
       </section>
 
+      {/* Content Wrapper - Scrolls Over Image */}
+      <div className="relative z-10">
+
       {/* Article Body */}
-      <section className="relative w-full py-[80px] md:py-[120px] bg-[#F2F3F4]">
+      <section className="relative w-full pt-[80px] md:pt-[120px] pb-[80px] md:pb-[120px] bg-[#F2F3F4] rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
         {/* Grid Lines */}
         <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
           <div className="max-w-[1248px] mx-auto h-full flex justify-between px-6">
@@ -255,6 +254,7 @@ export default async function BlogDetailPage({
 
       {/* CTA Footer */}
       <CtaFooter />
+      </div>
     </main>
   );
 }

@@ -6,6 +6,9 @@ export default function CtaFooter() {
 
   return (
     <section className="relative w-full min-h-[100vh] flex flex-col overflow-hidden">
+      {/* Bleed gradient - smooth transition from previous section */}
+      <div className="absolute top-0 left-0 right-0 h-20 z-[2] bg-gradient-to-b from-[#F5F5F5] to-transparent pointer-events-none" />
+
       {/* Background Image - spans entire section */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -15,8 +18,8 @@ export default function CtaFooter() {
           className="object-cover object-center"
           priority
         />
-        {/* Top dark gradient for navbar legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent" />
+        {/* Top soft gradient for blending */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
         {/* Bottom heavy black gradient for footer legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 via-40% to-transparent" />
       </div>

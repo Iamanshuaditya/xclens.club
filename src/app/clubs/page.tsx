@@ -218,11 +218,11 @@ export default function ClubsPage() {
                                 <div className="space-y-8 relative z-10">
                                     <div>
                                         <div className="flex justify-between items-end mb-2">
-                                            <span className="text-sm text-white/40 font-medium">Network Volume</span>
-                                            <span className="text-2xl font-mono">$124,500</span>
+                                            <span className="text-sm text-white/40 font-medium">Seed Pool</span>
+                                            <span className="text-2xl font-mono">$10,000</span>
                                         </div>
                                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                            <div className="h-full w-[78%] bg-white rounded-full relative">
+                                            <div className="h-full w-[35%] bg-white rounded-full relative">
                                                 <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent opacity-50"></div>
                                             </div>
                                         </div>
@@ -230,12 +230,12 @@ export default function ClubsPage() {
 
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                                            <div className="text-3xl font-serif mb-1">52</div>
-                                            <div className="text-[10px] uppercase tracking-wider text-white/40">Chapters</div>
+                                            <div className="text-3xl font-serif mb-1">5</div>
+                                            <div className="text-[10px] uppercase tracking-wider text-white/40">Cities Targeted</div>
                                         </div>
                                         <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                                            <div className="text-3xl font-serif mb-1">12k</div>
-                                            <div className="text-[10px] uppercase tracking-wider text-white/40">Members</div>
+                                            <div className="text-3xl font-serif mb-1">200+</div>
+                                            <div className="text-[10px] uppercase tracking-wider text-white/40">Waitlist</div>
                                         </div>
                                     </div>
                                 </div>
@@ -291,7 +291,7 @@ export default function ClubsPage() {
                             {
                                 icon: <Globe className="text-emerald-600" size={32} strokeWidth={1.5} />,
                                 title: "Global Access",
-                                desc: "Priority entry to Xcelens summits in Singapore, Dubai, and Bangalore."
+                                desc: "Priority entry to Xcelens summits in Singapore, Dubai, and Bangalore.*"
                             },
                             {
                                 icon: <Zap className="text-yellow-600" size={32} strokeWidth={1.5} />,
@@ -316,6 +316,9 @@ export default function ClubsPage() {
                             </CrystalCard>
                         ))}
                     </div>
+                    <p className="mt-8 text-xs text-zinc-400 font-light leading-relaxed">
+                        *As determined at the time of the event, subject to change from time to time, without prior notification. This is a privilege extended, not a right earned.
+                    </p>
                 </div>
             </section>
 
@@ -335,8 +338,8 @@ export default function ClubsPage() {
                             </button>
                         </div>
 
-                        <div className="relative pl-8 md:pl-0">
-                            <div className="absolute left-0 md:left-[39px] top-0 bottom-0 w-px bg-gray-200"></div>
+                        <div className="relative">
+                            <div className="absolute left-5 top-0 bottom-0 w-px bg-gray-200"></div>
 
                             {[
                                 { step: "01", title: "Manifesto", desc: "Draft a constitution. Define your 'Why'. We provide templates for a compelling mission statement." },
@@ -346,14 +349,13 @@ export default function ClubsPage() {
                             ].map((phase, i) => (
                                 <motion.div
                                     key={i}
-                                    className="mb-20 relative pl-12"
+                                    className="mb-20 relative pl-14"
                                     initial={{ opacity: 0, x: 20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, margin: "-100px" }}
                                     transition={{ duration: 0.5, delay: i * 0.1 }}
                                 >
-                                    <div className="hidden md:block absolute left-[30px] top-2 w-5 h-5 rounded-full bg-white border-4 border-black z-10 transition-transform hover:scale-150 shadow-sm" />
-                                    <div className="md:hidden absolute left-[-5px] top-1 w-3 h-3 rounded-full bg-black z-10" />
+                                    <div className="absolute left-5 -translate-x-1/2 top-[26px] w-4 h-4 md:w-5 md:h-5 rounded-full bg-white border-[3px] md:border-4 border-black z-10 transition-transform hover:scale-150 shadow-sm" />
 
                                     <span className="text-sm font-bold tracking-widest text-zinc-400 uppercase mb-2 block">Phase {phase.step}</span>
                                     <h3 className="text-3xl font-serif mb-4 text-zinc-900">{phase.title}</h3>

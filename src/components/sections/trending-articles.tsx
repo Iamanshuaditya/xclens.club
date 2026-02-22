@@ -1,32 +1,13 @@
-import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { blogPosts } from '@/data/blog-posts';
 
 const TrendingArticles = () => {
-  const articles = [
-    {
-      category: 'Life Skills',
-      title: 'Jinsei — Live Your Best Life',
-      date: 'Oct 21, 2025',
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/o3eXkdKDhbgtXA5BP7lNt5KoHkc-2.jpg',
-      featured: true,
-      link: './blog/jinsei'
-    },
-    {
-      category: 'Team',
-      title: 'What Happens at a Xcelens Session - An activity explained',
-      date: 'Aug 11, 2025',
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/I1i1aH3cI6Ef79GFYgyxuigzAsc-3.jpg',
-      featured: false,
-      link: './blog/mocksession'
-    },
-    {
-      category: 'Personal Well-Being',
-      title: 'Why Every Young Person Needs a Pentafecta',
-      date: 'Oct 21, 2023',
-      image: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/A5JxusJLEIR79cqLLnjbM30AZcQ-4.jpg',
-      featured: false,
-      link: './blog/pentafecta2'
-    }
+  // Featured: Jinsei, Stacked: mocksession + pentafecta2
+  const featured = blogPosts.find(p => p.slug === 'jinsei')!;
+  const stacked = [
+    blogPosts.find(p => p.slug === 'mocksession')!,
+    blogPosts.find(p => p.slug === 'pentafecta2')!,
   ];
 
   return (
@@ -49,74 +30,76 @@ const TrendingArticles = () => {
           </h2>
         </div>
 
+        {/* Bento Box Grid: Large left + 2 stacked right */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           {/* Featured Large Card - Left */}
-          <div className="h-full">
-            <ArticleCard article={articles[0]} isLarge />
-          </div>
+          <Link
+            href={`/blog/${featured.slug}`}
+            className="group relative block w-full h-[400px] md:h-[640px] overflow-hidden rounded-[12px] bg-black transition-transform duration-500 ease-out hover:scale-[1.01]"
+          >
+            <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
+              <Image
+                src={featured.image}
+                alt={featured.title}
+                fill
+                className="object-cover opacity-90"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+              <div className="space-y-3">
+                <span className="block text-[12px] font-semibold uppercase tracking-[0.05em] text-white/90 font-sans">
+                  {featured.category}
+                </span>
+                <h3 className="font-display text-[32px] md:text-[40px] text-white leading-[1.2] tracking-[-0.01em] max-w-sm">
+                  {featured.title}
+                </h3>
+                <p className="text-[14px] text-white/70 font-sans mt-2">
+                  {featured.date}
+                </p>
+              </div>
+            </div>
+          </Link>
 
           {/* Stacked Small Cards - Right */}
           <div className="flex flex-col gap-6 h-full">
-            <ArticleCard article={articles[1]} />
-            <ArticleCard article={articles[2]} />
+            {stacked.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/blog/${article.slug}`}
+                className="group relative block w-full flex-1 min-h-[250px] md:min-h-0 overflow-hidden rounded-[12px] bg-black transition-transform duration-500 ease-out hover:scale-[1.01]"
+              >
+                <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    fill
+                    className="object-cover opacity-90"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                  <div className="space-y-3">
+                    <span className="block text-[12px] font-semibold uppercase tracking-[0.05em] text-white/90 font-sans">
+                      {article.category}
+                    </span>
+                    <h3 className="font-display text-[24px] text-white leading-[1.2] tracking-[-0.01em] max-w-xs">
+                      {article.title}
+                    </h3>
+                    <p className="text-[14px] text-white/70 font-sans mt-2">
+                      {article.date}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
     </section>
-  );
-};
-
-interface ArticleCardProps {
-  article: {
-    category: string;
-    title: string;
-    date: string;
-    image: string;
-    link: string;
-  };
-  isLarge?: boolean;
-}
-
-const ArticleCard = ({ article, isLarge = false }: ArticleCardProps) => {
-  return (
-    <a 
-      href={article.link}
-      className={`group relative block w-full overflow-hidden rounded-[12px] bg-black transition-transform duration-500 ease-out hover:scale-[1.01] ${
-        isLarge ? 'h-[640px]' : 'h-[308px]'
-      }`}
-    >
-      {/* Background Image */}
-      <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
-        <Image
-          src={article.image}
-          alt={article.title}
-          fill
-          className="object-cover opacity-90"
-          sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 50vw"}
-          priority={isLarge}
-        />
-      </div>
-
-      {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-      {/* Content Overlay */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-        <div className="space-y-3">
-          <span className="block text-[12px] font-semibold uppercase tracking-[0.05em] text-white/90 font-sans">
-            {article.category}
-          </span>
-          <h3 className={`font-display text-white leading-[1.2] tracking-[-0.01em] ${
-            isLarge ? 'text-[32px] md:text-[40px] max-w-sm' : 'text-[24px] max-w-xs'
-          }`}>
-            {article.title}
-          </h3>
-          <p className="text-[14px] text-white/70 font-sans mt-2">
-            {article.date}
-          </p>
-        </div>
-      </div>
-    </a>
   );
 };
 
