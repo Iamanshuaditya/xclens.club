@@ -6,7 +6,7 @@ const AboutHero = () => {
   const heroImage = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/EhuG74CStbxIw5e7LrBaklPUrs-1.png";
 
   return (
-    <section className="relative w-full h-[100vh] min-h-[600px] flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[50vh] min-h-[350px] flex flex-col items-center justify-center overflow-hidden">
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <Image

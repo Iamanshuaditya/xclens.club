@@ -44,9 +44,8 @@ const CTABanner = () => {
           <a
             href="#"
             className="btn-pill btn-pill-primary inline-flex items-center justify-center bg-white text-black font-semibold rounded-full px-8 py-3 transition-transform duration-200 hover:scale-105"
-            style={{ 
+            style={{
               fontSize: '15px',
-              fontFamily: 'var(--font-sans)',
               minWidth: '200px'
             }}
           >

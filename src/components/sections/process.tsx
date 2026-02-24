@@ -23,7 +23,7 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section className="relative bg-[#f5f5f7] py-[120px] md:py-[160px]">
+    <section className="relative bg-[#f5f5f7] py-[60px] md:py-[160px]">
       {/* Background grid */}
       <div className="absolute inset-0 pointer-events-none" style={{
         backgroundImage: `

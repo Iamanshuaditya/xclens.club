@@ -23,7 +23,7 @@ const contactDetails = [
 
 export default function ContactInfo() {
   return (
-    <section className="relative w-full bg-[#f2f3f4] pt-[80px] pb-[40px] px-10">
+    <section className="relative w-full bg-[#f2f3f4] pt-[80px] pb-[40px] px-10 hidden md:block">
       <div className="container max-w-[1200px] mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {contactDetails.map((item) => (

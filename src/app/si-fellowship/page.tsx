@@ -3,15 +3,8 @@
 import React from 'react';
 import Navbar from '@/components/sections/navbar';
 import CtaFooter from '@/components/sections/cta-footer';
-import { Instrument_Serif } from "next/font/google";
 import { MoveRight } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
-
-const instrumentSerif = Instrument_Serif({
-    subsets: ["latin"],
-    weight: "400",
-    variable: "--font-instrument-serif",
-});
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -31,7 +24,7 @@ const staggerText: Variants = {
 
 export default function SiFellowshipPage() {
     return (
-        <main className={`min-h-screen bg-[#FDFBF7] text-[#1A1A1A] ${instrumentSerif.variable} selection:bg-black selection:text-white`}>
+        <main className="min-h-screen bg-[#FDFBF7] text-[#1A1A1A] selection:bg-black selection:text-white">
             <Navbar />
 
             {/* HERO SECTION - Minimal & typographic */}

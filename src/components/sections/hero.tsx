@@ -108,24 +108,22 @@ const HeroSection = () => {
           transition={textTransition}
         >
           <h1
-            className="text-[12vw] md:text-[90px] font-normal leading-tight md:leading-[99px] text-[#000000] tracking-tight text-center"
-            style={{ fontFamily: 'var(--font-instrument-serif)' }}
+            className="text-[15vw] md:text-[90px] font-normal leading-tight md:leading-[99px] text-[#000000] tracking-tight text-center"
           >
-            From Overwhelm <br />
-            to Breakthrough
+            From Overwhelm <br className="hidden md:block" />to Breakthrough
           </h1>
         </motion.div>
 
         {/* CTA Buttons (Staggered Slide Up) */}
         <motion.div
-          className="flex flex-row items-center justify-center gap-3 z-20"
+          className="flex flex-col md:flex-row items-center justify-center gap-3 z-20 w-full md:w-auto"
           initial="initial"
           animate="animate"
           transition={buttonContainerTransition}
         >
           <motion.a
             href="https://cal.com/flamby/x"
-            className="btn-pill bg-black text-white hover:opacity-90 min-w-[180px] inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold transition-opacity"
+            className="btn-pill bg-black text-white hover:opacity-90 min-w-[180px] w-full md:w-auto inline-flex items-center justify-center rounded-full px-6 py-4 md:py-3 font-semibold transition-opacity"
             variants={{
               initial: { opacity: 0, y: 20 },
               animate: { opacity: 1, y: 0 }
@@ -137,7 +135,7 @@ const HeroSection = () => {
 
           <motion.a
             href="/sat-school"
-            className="btn-pill bg-white text-black border border-[#E5E5E5] hover:bg-[#f9f9f9] min-w-[130px] inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold transition-colors"
+            className="btn-pill bg-white text-black border border-[#E5E5E5] hover:bg-[#f9f9f9] min-w-[130px] w-full md:w-auto inline-flex items-center justify-center rounded-full px-6 py-4 md:py-3 font-semibold transition-colors"
             variants={{
               initial: { opacity: 0, y: 20 },
               animate: { opacity: 1, y: 0 }

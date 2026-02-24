@@ -27,7 +27,6 @@ const BioQuote: React.FC = () => {
         <div 
           className="framer-3i5o8y" 
           style={{
-            fontFamily: 'var(--font-display)',
             fontSize: '14px',
             lineHeight: '1.6em',
             letterSpacing: '0px',
@@ -84,7 +83,6 @@ const BioQuote: React.FC = () => {
         <div 
           className="framer-ivcm6d"
           style={{
-            fontFamily: 'var(--font-display)',
             fontSize: '13px',
             fontWeight: 400,
             lineHeight: '1.2em',

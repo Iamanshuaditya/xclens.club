@@ -111,8 +111,8 @@ const Navbar = () => {
   return (
     <>
       <div className="fixed top-0 left-0 w-full z-[999] flex justify-center p-4 md:p-[40px] pointer-events-none">
-        <div className="pointer-events-auto">
-          <header className={`relative flex items-center h-[50px] md:h-[45px] w-auto transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="pointer-events-auto w-full md:w-auto">
+          <header className={`relative flex items-center h-[50px] md:h-[45px] w-full md:w-auto transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}>
             {/* Glass Container */}
             <div className="absolute inset-0 rounded-full overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10" />

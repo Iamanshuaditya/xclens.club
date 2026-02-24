@@ -3,15 +3,8 @@
 import React from 'react';
 import Navbar from '@/components/sections/navbar';
 import CtaFooter from '@/components/sections/cta-footer';
-import { Instrument_Serif } from "next/font/google";
 import { ArrowUpRight, ArrowRight, Play, BookOpen, Users } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
-
-const instrumentSerif = Instrument_Serif({
-    subsets: ["latin"],
-    weight: "400",
-    variable: "--font-instrument-serif",
-});
 
 const fadeInSlow: Variants = {
     hidden: { opacity: 0 },
@@ -36,7 +29,7 @@ const slideUp: Variants = {
 
 export default function WorkshopsPage() {
     return (
-        <main className={`min-h-screen bg-[#050505] text-[#E5E5E5] ${instrumentSerif.variable} selection:bg-white selection:text-black`}>
+        <main className="min-h-screen bg-[#050505] text-[#E5E5E5] selection:bg-white selection:text-black">
             <Navbar />
 
             {/* HERO SECTION - Deep & Philosophical */}

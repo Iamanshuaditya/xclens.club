@@ -62,17 +62,17 @@ export default function WhyChooseMe() {
                 className="flex flex-col items-center text-center gap-3"
               >
                 {/* Number Label - Orange */}
-                <span className="font-sans text-[14px] font-semibold text-[#D4772C]">
+                <span className="font-sans text-[16px] md:text-[14px] font-semibold text-[#D4772C]">
                   {benefit.number}
                 </span>
 
                 {/* Benefit Headline */}
-                <h3 className="font-display text-[22px] leading-[1.2] text-black">
+                <h3 className="font-display text-[28px] md:text-[22px] leading-[1.2] text-black">
                   {benefit.title}
                 </h3>
 
                 {/* Benefit Description */}
-                <p className="font-sans text-[14px] leading-[1.6] text-[#666666] max-w-[280px]">
+                <p className="font-sans text-[18px] md:text-[14px] leading-[1.6] text-[#666666] max-w-[280px]">
                   {benefit.description}
                 </p>
               </div>

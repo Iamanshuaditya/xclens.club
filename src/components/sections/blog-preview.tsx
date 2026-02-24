@@ -46,7 +46,7 @@ const BlogPreview = () => {
   ];
 
   return (
-    <section className="relative py-[140px] bg-[#f3f3f3] overflow-hidden">
+    <section className="relative py-[60px] md:py-[140px] bg-[#f3f3f3] overflow-hidden">
       {/* Background Grid Lines */}
       <div className="absolute inset-0 pointer-events-none container mx-auto px-6 flex justify-between">
         {[...Array(5)].map((_, i) => (

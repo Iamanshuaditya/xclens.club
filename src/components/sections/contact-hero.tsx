@@ -6,7 +6,7 @@ const ContactHero = () => {
   const backgroundImage = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/a3449915-9d5a-4bbc-a8b2-5144cf4b9dd4-xcelens-club/assets/images/e6v2jehngEj2cKlbvzPHaHI4JO8-1.png";
 
   return (
-    <section className="relative w-full h-[600px] md:h-[700px] lg:h-[800px] overflow-hidden flex flex-col items-center justify-center text-center px-6">
+    <section className="relative w-full h-[50vh] md:h-[700px] lg:h-[800px] overflow-hidden flex flex-col items-center justify-center text-center px-6">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image

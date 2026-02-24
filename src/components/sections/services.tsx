@@ -4,7 +4,7 @@ import { services } from '@/data/services';
 
 const ServicesSection = () => {
   return (
-    <section className="relative w-full bg-[#f3f3f3] py-[140px] overflow-hidden" id="services">
+    <section className="relative w-full bg-[#f3f3f3] py-[60px] md:py-[140px] overflow-hidden" id="services">
       {/* Background Grid Lines */}
       <div className="absolute inset-0 pointer-events-none flex justify-center">
         <div className="container h-full grid grid-cols-5 gap-0">
@@ -42,14 +42,14 @@ const ServicesSection = () => {
                 className="group relative flex flex-col h-[520px] bg-black rounded-[12px] overflow-hidden transition-transform duration-300 hover:-translate-y-1"
               >
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0 w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500">
+                <div className="absolute inset-0 w-full h-full">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover opacity-60"
+                    className="object-cover opacity-90"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 </div>
 
                 {/* Content */}

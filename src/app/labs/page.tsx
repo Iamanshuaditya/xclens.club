@@ -3,15 +3,8 @@
 import React from 'react';
 import Navbar from '@/components/sections/navbar';
 import CtaFooter from '@/components/sections/cta-footer';
-import { Instrument_Serif } from "next/font/google";
 import { ArrowUpRight } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
-
-const instrumentSerif = Instrument_Serif({
-    subsets: ["latin"],
-    weight: "400",
-    variable: "--font-instrument-serif",
-});
 
 const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 40 },
@@ -31,7 +24,7 @@ const staggerContainer: Variants = {
 
 export default function LabsPage() {
     return (
-        <main className={`min-h-screen bg-[#FDFBF7] text-[#111] ${instrumentSerif.variable}`}>
+        <main className="min-h-screen bg-[#FDFBF7] text-[#111]">
             <Navbar />
 
             {/* HERO - Ultra Minimal & Bold */}

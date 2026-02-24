@@ -3,25 +3,12 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/sections/navbar';
 import CtaFooter from '@/components/sections/cta-footer';
-import { Instrument_Serif, Inter } from "next/font/google";
 import {
     Users, Library, Award, Globe, ArrowRight,
     ChevronDown, Zap, Shield, Target, Sparkles,
     Plus, Minus
 } from 'lucide-react';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
-
-// --- Fonts ---
-const instrumentSerif = Instrument_Serif({
-    subsets: ["latin"],
-    weight: "400",
-    variable: "--font-instrument-serif",
-});
-
-const inter = Inter({
-    subsets: ["latin"],
-    variable: "--font-inter",
-});
 
 // --- Sub-Components ---
 
@@ -123,7 +110,7 @@ export default function ClubsPage() {
     const smoothProgress = useSpring(scrollYProgress, { damping: 20, stiffness: 100 });
 
     return (
-        <main className={`min-h-screen bg-[#FAFAFA] text-zinc-900 selection:bg-black selection:text-white ${instrumentSerif.variable} ${inter.variable} font-sans overflow-x-hidden`}>
+        <main className="min-h-screen bg-[#FAFAFA] text-zinc-900 selection:bg-black selection:text-white overflow-x-hidden">
             {/* Inline Styles for hiding scrollbar */}
             <style jsx global>{`
                 .hide-scrollbar::-webkit-scrollbar { display: none; }

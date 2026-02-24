@@ -4,7 +4,7 @@ import { blogPosts } from '@/data/blog-posts';
 
 const AllArticles = () => {
   return (
-    <section className="relative w-full py-[120px] bg-[#F5F5F5] overflow-hidden">
+    <section className="relative w-full pt-[40px] pb-[120px] bg-[#F5F5F5] overflow-hidden">
       {/* Decorative Grid Lines Overlay */}
       <div className="absolute inset-x-0 top-0 bottom-0 pointer-events-none z-0 hidden lg:block">
         <div className="max-w-[1248px] mx-auto h-full flex justify-between px-6">
