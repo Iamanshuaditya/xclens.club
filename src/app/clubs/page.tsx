@@ -235,17 +235,17 @@ export default function ClubsPage() {
                 </div>
             </section>
 
-            {/* INTELLECTUAL CAPITAL - FEATURES */}
-            <section className="py-32 px-6 relative z-10">
+            {/* FOUNDING CHARTER - 10 SLOTS */}
+            <section className="py-20 md:py-32 px-6 relative z-10">
                 <div className="max-w-[1400px] mx-auto">
-                    <div className="mb-24 md:text-center max-w-3xl mx-auto">
+                    <div className="mb-16 md:mb-24 md:text-center max-w-3xl mx-auto">
                         <motion.h2
                             className="text-5xl md:text-6xl font-serif mb-6 text-zinc-900"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            The Resource Vault.
+                            Founding Charter.
                         </motion.h2>
                         <motion.p
                             className="text-xl text-zinc-500 leading-relaxed"
@@ -254,58 +254,44 @@ export default function ClubsPage() {
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
                         >
-                            More than just a club. We inject premium intellectual and operational capital into your ecosystem.
+                            Only 10 founding chapter slots available. Claim yours before they&apos;re gone.
                         </motion.p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {[
-                            {
-                                icon: <Library className="text-blue-600" size={32} strokeWidth={1.5} />,
-                                title: "Proprietary Data",
-                                desc: "Access Xcelens research databases, case study repositories, and framework libraries."
-                            },
-                            {
-                                icon: <Users className="text-indigo-600" size={32} strokeWidth={1.5} />,
-                                title: "Peer Network",
-                                desc: "Connect with Presidents of other elite chapters. Bi-weekly roundtables and shared Slack."
-                            },
-                            {
-                                icon: <Award className="text-orange-600" size={32} strokeWidth={1.5} />,
-                                title: "Credentialing",
-                                desc: "Certificates of Excellence for leadership teams, endorsed by our global advisory board."
-                            },
-                            {
-                                icon: <Globe className="text-emerald-600" size={32} strokeWidth={1.5} />,
-                                title: "Global Access",
-                                desc: "Priority entry to Xcelens summits in Singapore, Dubai, and Bangalore.*"
-                            },
-                            {
-                                icon: <Zap className="text-yellow-600" size={32} strokeWidth={1.5} />,
-                                title: "Growth Kits",
-                                desc: "Marketing templates, sponsorship decks, and event run-books ready to deploy."
-                            },
-                            {
-                                icon: <Shield className="text-red-600" size={32} strokeWidth={1.5} />,
-                                title: "Mentorship",
-                                desc: "Direct office hours with industry veterans and Xcelens fellows."
-                            }
-                        ].map((item, i) => (
-                            <CrystalCard key={i} className="p-8 md:p-10 flex flex-col items-start gap-8 hover:-translate-y-2 transition-transform duration-500">
-                                {/* Explicit container sizing for icon stability */}
-                                <div className="w-16 h-16 min-w-[64px] min-h-[64px] rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center shadow-sm group-hover:bg-white group-hover:scale-110 transition-all duration-300">
-                                    {item.icon}
-                                </div>
-                                <div className="space-y-4">
-                                    <h3 className="text-2xl font-serif text-zinc-900 group-hover:text-black">{item.title}</h3>
-                                    <p className="text-zinc-500 leading-relaxed font-light text-base">{item.desc}</p>
-                                </div>
-                            </CrystalCard>
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+                        {Array.from({ length: 10 }).map((_, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.05 }}
+                                className="relative bg-[#0A0A0A] rounded-2xl md:rounded-3xl p-5 md:p-8 flex flex-col items-center justify-center text-center aspect-square border border-white/10 overflow-hidden group hover:border-white/20 transition-all duration-300"
+                            >
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <span className="text-3xl md:text-5xl font-serif text-white mb-2 relative z-10">
+                                    {String(i + 1).padStart(2, '0')}
+                                </span>
+                                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-white/40 relative z-10">
+                                    {i < 3 ? 'Claimed' : 'Open'}
+                                </span>
+                                {i < 3 && (
+                                    <div className="absolute inset-0 bg-white/5 backdrop-blur-[1px]" />
+                                )}
+                            </motion.div>
                         ))}
                     </div>
-                    <p className="mt-8 text-xs text-zinc-400 font-light leading-relaxed">
-                        *As determined at the time of the event, subject to change from time to time, without prior notification. This is a privilege extended, not a right earned.
-                    </p>
+
+                    <motion.div
+                        className="mt-12 md:mt-16 text-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <a href="#start-club" className="px-10 py-4 bg-zinc-950 text-white rounded-full font-medium text-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-2">
+                            Claim Your Slot <ArrowRight size={18} />
+                        </a>
+                    </motion.div>
                 </div>
             </section>
 

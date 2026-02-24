@@ -1,7 +1,6 @@
 import Navbar from "@/components/sections/navbar";
 import AboutHero from "@/components/sections/about-hero";
 import AboutOverview from "@/components/sections/about-overview";
-import WhyChooseMe from "@/components/sections/why-choose-me";
 import GuidedCoaching from "@/components/sections/guided-coaching";
 import CtaFooter from "@/components/sections/cta-footer";
 
@@ -11,7 +10,6 @@ export default function AboutPage() {
       <Navbar />
       <AboutHero />
       <AboutOverview />
-      <WhyChooseMe />
       <GuidedCoaching />
       <CtaFooter />
       

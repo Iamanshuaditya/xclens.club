@@ -38,7 +38,7 @@ export default function ServicesPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full pt-48 pb-24 overflow-hidden">
+      <section className="relative w-full pt-32 pb-12 md:pt-48 md:pb-24 overflow-hidden">
         {/* Background Grid Lines */}
         <div className="absolute inset-0 pointer-events-none flex justify-center">
           <div className="container h-full grid grid-cols-5 gap-0">
@@ -64,7 +64,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Section */}
-      <section className="relative w-full py-[140px] bg-[#f3f3f3] overflow-hidden">
+      <section className="relative w-full py-[60px] md:py-[140px] bg-[#f3f3f3] overflow-hidden">
         {/* Background Grid Lines */}
         <div className="absolute inset-0 pointer-events-none flex justify-center">
           <div className="container h-full grid grid-cols-5 gap-0">
@@ -132,7 +132,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="relative bg-[#f3f3f3] py-[120px]">
+      <section className="relative bg-[#f3f3f3] py-[60px] md:py-[120px]">
         <div className="absolute inset-0 pointer-events-none flex justify-center">
           <div className="container h-full grid grid-cols-5 gap-0">
             <div className="border-l border-[#e5e5e5] h-full" />
@@ -167,7 +167,7 @@ export default function ServicesPage() {
             {testimonials.map((testimonial, index) => (
               <article
                 key={index}
-                className="bg-white/90 backdrop-blur-sm rounded-[2rem] p-10 border border-[#e5e5e5]/80 shadow-[0_4px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between min-h-[260px]"
+                className="bg-white/90 backdrop-blur-sm rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-10 border border-[#e5e5e5]/80 shadow-[0_4px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between"
               >
                 <div>
                   {/* Stars */}
