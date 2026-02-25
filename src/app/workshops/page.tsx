@@ -29,7 +29,7 @@ const slideUp: Variants = {
 
 export default function WorkshopsPage() {
     return (
-        <main className="min-h-screen bg-[#050505] text-[#E5E5E5] selection:bg-white selection:text-black">
+        <main className="min-h-screen bg-[#050505] text-[#E5E5E5] selection:bg-white selection:text-black overflow-x-hidden">
             <Navbar />
 
             {/* HERO SECTION - Deep & Philosophical */}
@@ -39,7 +39,7 @@ export default function WorkshopsPage() {
 
                 {/* Ambient Glow */}
                 <motion.div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] md:w-[600px] h-[80vw] md:h-[600px] bg-indigo-900/20 rounded-full blur-[120px] pointer-events-none"
                     animate={{
                         scale: [1, 1.2, 1],
                         opacity: [0.2, 0.4, 0.2]
@@ -62,7 +62,7 @@ export default function WorkshopsPage() {
                     </motion.span>
 
                     <motion.h1
-                        className="text-[12vw] md:text-[8rem] leading-[0.85] font-serif tracking-tight mb-8 text-white mix-blend-overlay"
+                        className="text-[11vw] md:text-[8rem] leading-[0.85] font-serif tracking-tight mb-8 text-white mix-blend-overlay"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, ease: "easeOut" }}
@@ -106,7 +106,7 @@ export default function WorkshopsPage() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                             >
-                                <h2 className="text-6xl font-serif mb-6 leading-tight">The Anatomy of Learning</h2>
+                                <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">The Anatomy of Learning</h2>
                                 <p className="text-white/50 text-lg">Our pedagogical approach is designed to break inertia and induce flow.</p>
                             </motion.div>
                         </div>
@@ -246,23 +246,23 @@ export default function WorkshopsPage() {
                             ].map((ws, i) => (
                                 <motion.div
                                     key={i}
-                                    className="p-8 border border-white/10 rounded-2xl flex items-center justify-between hover:bg-white/5 transition-colors cursor-pointer group"
+                                    className="p-6 md:p-8 border border-white/10 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/5 transition-colors cursor-pointer group"
                                     initial={{ x: 20, opacity: 0 }}
                                     whileInView={{ x: 0, opacity: 1 }}
                                     transition={{ delay: i * 0.1 }}
                                     viewport={{ once: true }}
                                 >
-                                    <div className="flex items-center gap-8">
-                                        <div className="flex flex-col text-center w-16">
+                                    <div className="flex items-center gap-4 md:gap-8">
+                                        <div className="flex flex-col text-center w-14 md:w-16 shrink-0">
                                             <span className="text-sm font-bold uppercase tracking-widest text-white/40">{ws.date.split(' ')[0]}</span>
                                             <span className="text-2xl font-serif">{ws.date.split(' ')[1]}</span>
                                         </div>
-                                        <div>
-                                            <h4 className="text-2xl font-serif group-hover:text-indigo-400 transition-colors">{ws.title}</h4>
+                                        <div className="min-w-0">
+                                            <h4 className="text-xl md:text-2xl font-serif group-hover:text-indigo-400 transition-colors">{ws.title}</h4>
                                             <span className="text-xs text-white/40 uppercase tracking-widest">Single Session • 4 Hours</span>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-4 ml-[calc(3.5rem+1rem)] sm:ml-0">
                                         <span className={`text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border ${ws.status === 'Open' ? 'border-green-500/30 text-green-400' :
                                             ws.status === 'Waitlist' ? 'border-red-500/30 text-red-400' : 'border-yellow-500/30 text-yellow-400'
                                             }`}>
@@ -278,7 +278,7 @@ export default function WorkshopsPage() {
                     {/* PAST ARCHIVE */}
                     <div className="pt-20 border-t border-white/5">
                         <h3 className="text-2xl font-serif mb-8 text-white/60">Archive / Past Workshops</h3>
-                        <div className="grid md:grid-cols-4 gap-6 opacity-60 hover:opacity-100 transition-opacity">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 opacity-60 hover:opacity-100 transition-opacity">
                             {[
                                 "Season 01: Origins",
                                 "Season 02: Expansion",
@@ -299,7 +299,7 @@ export default function WorkshopsPage() {
             <section className="py-40 px-6 flex flex-col items-center text-center bg-[#050505]">
                 <span className="text-indigo-400 font-mono text-xs tracking-widest uppercase mb-6">Join the Intellectual Dojo</span>
                 <motion.h2
-                    className="text-5xl md:text-8xl font-serif mb-10 text-white"
+                    className="text-4xl md:text-8xl font-serif mb-10 text-white"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

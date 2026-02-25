@@ -202,29 +202,12 @@ export default function ClubsPage() {
                                     <Globe className="text-white/20" />
                                 </div>
 
-                                <div className="space-y-8 relative z-10">
-                                    <div>
-                                        <div className="flex justify-between items-end mb-2">
-                                            <span className="text-sm text-white/40 font-medium">Seed Grant Pool</span>
-                                            <span className="text-2xl font-mono">$2,000</span>
-                                        </div>
-                                        <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                            <div className="h-full w-[35%] bg-white rounded-full relative">
-                                                <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent opacity-50"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                                            <div className="text-3xl font-serif mb-1">10</div>
-                                            <div className="text-[10px] uppercase tracking-wider text-white/40">Founding Chapter Slots</div>
-                                        </div>
-                                        <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                                            <div className="text-3xl font-serif mb-1">200+</div>
-                                            <div className="text-[10px] uppercase tracking-wider text-white/40">Waitlist</div>
-                                        </div>
-                                    </div>
+                                <div className="relative z-10 flex flex-col items-center text-center pt-2">
+                                    <div className="text-[5rem] font-serif leading-none text-white mb-2">10</div>
+                                    <div className="text-[10px] uppercase tracking-[0.25em] text-white/40 mb-8">Founding Slots Available</div>
+                                    <a href="#start-club" className="inline-flex items-center gap-2 px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/10 text-white text-sm font-medium rounded-full transition-all duration-300">
+                                        Claim Your Slot <ArrowRight size={14} />
+                                    </a>
                                 </div>
                             </div>
 

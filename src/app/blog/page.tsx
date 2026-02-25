@@ -12,7 +12,7 @@ export default function BlogPage() {
       <TrendingArticles />
       <AllArticles />
       <CtaFooter />
-      
+
       {/* Background Vertical Grid Lines */}
       <div className="fixed inset-0 pointer-events-none z-[-1] opacity-[0.03]">
         <div className="grid-guide grid-guide-1" />
