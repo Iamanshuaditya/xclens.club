@@ -1,0 +1,2 @@
+import{t as e}from"./rolldown-runtime.VnHjG-ER.mjs";function t(e,t){return{description:`Neelmani's expert life coaching empowers you to conquer self-doubt, set clear goals, and unlock lasting growth, start your journey to transformation today.`,favicon:`https://framerusercontent.com/assets/GdQjZKJ2niY3V3LHHzajnzwD8s.png`,robots:`max-image-preview:large`,socialImage:`https://framerusercontent.com/assets/87urdBk8X03YYSO5lESHIlTKEu8.jpg`,title:`Xcelens - Student Life Coach`}}var n=e((()=>{}));export{t as n,n as t};
+//# sourceMappingURL=shared-lib.fTU_-UzX.mjs.map

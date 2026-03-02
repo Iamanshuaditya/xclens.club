@@ -32,8 +32,8 @@ const Navbar = () => {
   const desktopItems = [
     { name: 'Home', href: '/', icon: <House size={14} /> },
     { name: 'About', href: '/about', icon: <User size={14} /> },
-    { name: 'Blog', href: '/blog', icon: <BookOpen size={14} /> },
-    { name: 'Contact', href: '/contact', icon: <Mail size={14} /> },
+    { name: 'Services', href: '/services', icon: <Compass size={14} /> },
+    { name: 'Workshops', href: '/workshops', icon: <BookOpen size={14} /> },
     { name: 'Saturday School', href: '/sat-school', icon: <GraduationCap size={14} /> },
   ];
 

@@ -276,49 +276,80 @@ const SatSchoolHero = () => {
         <div
           className="relative h-[500px] lg:h-[700px] w-full"
         >
-          {/* Arm Wrap - The main 3D oriented container, centered in right column */}
+          {/* BOOKS container - perspective lives HERE on the outer wrapper */}
           <div
-            className="absolute top-1/2 left-1/2 w-0 h-0"
+            className="absolute inset-0 pointer-events-none select-none"
             style={{
               transformStyle: 'preserve-3d',
-              perspective: '1400px',
-              transform: 'scale(0.5) rotateX(55deg)'
+              transform: 'perspective(1400px)',
+              overflow: 'visible',
             }}
           >
-            {/* ARMS - The spinning element */}
-            <motion.div
-              className="absolute inset-0 flex items-center justify-center"
+            {/* Arm Wrap - viewing angle only, NO perspective here */}
+            <div
+              className="absolute flex items-center justify-center"
               style={{
+                width: '90%',
+                height: '2002px',
+                top: 'calc(52% - 1001px)',
+                left: '51%',
                 transformStyle: 'preserve-3d',
-              }}
-              animate={{ rotateZ: 360 }}
-              transition={{
-                duration: 60,
-                ease: "linear",
-                repeat: Infinity
+                transform: 'scale(0.5) rotate(47deg) rotateX(29deg) rotateY(-70deg)',
+                overflow: 'visible',
               }}
             >
-              {booksData.map((book) => {
-                // Radius for the book orbit: Framer uses huge transforms, visually inferred as ~500-600px
-                const radius = 550;
-
-                return (
+              {/* ARMS - The spinning element */}
+              <motion.div
+                className="relative flex flex-col items-center justify-center"
+                style={{
+                  width: '100px',
+                  height: '100%',
+                  transformStyle: 'preserve-3d',
+                  overflow: 'visible',
+                }}
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 50,
+                  ease: [0, 0, 1, 1],
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+              >
+                {booksData.map((book) => (
                   <div
                     key={book.id}
-                    className="absolute top-0 left-0"
+                    className="absolute"
                     style={{
+                      width: '450px',
+                      height: '1px',
                       transformStyle: 'preserve-3d',
-                      transform: `rotate(${book.angle}deg) translateX(${radius}px)`,
+                      transform: `rotate(${book.angle}deg)`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-start',
+                      alignItems: 'center',
+                      overflow: 'visible',
                     }}
                   >
-                    {/* Book Holder anchor point - Center the book at the "Arm" tip */}
-                    <div className="relative -ml-[50%] -mt-[50%]" style={{ transformStyle: 'preserve-3d' }}>
+                    {/* Book Holder - at the end of the arm */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        right: 0,
+                        transformStyle: 'preserve-3d',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        overflow: 'visible',
+                      }}
+                    >
                       <FramerBook src={book.src} width={book.width} height={book.height} />
                     </div>
                   </div>
-                );
-              })}
-            </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </div>
 
           {/* Ambient depth gradient simulation */}
