@@ -129,6 +129,32 @@ const sessions = [
     },
 ];
 
+const virtusJournal = [
+    { title: "Daily Spot", desc: "One skill you noticed in the real world today — in a conversation, article, argument, or decision. What was it? How was it used (or misused)?" },
+    { title: "Problem Log", desc: "Problems you encountered this week, decomposed using Virtus frameworks. Variables, gaps, decision trees — applied to your actual life." },
+    { title: "Claim Tracker", desc: "Claims you heard that you evaluated instead of accepting. Source, evidence, fallacy check. Build the habit of intellectual self-defence." },
+    { title: "Debate Notes", desc: "Arguments you had or observed. What was the real disagreement? Run it through RISA. Who argued better, and why?" },
+    { title: "Case Study File", desc: "One real-world case study per week — from news, business, history, or personal experience — analysed using that week's skill cluster." },
+    { title: "Teach Back Log", desc: "What you taught someone this week. What you learned by teaching it. The Feynman record." },
+    { title: "Weekly Reflection", desc: "\"What's the sharpest piece of thinking I did this week — and the sloppiest?\" One page, every Sunday." },
+];
+
+const virtusMethodology = [
+    { num: "01", title: "Expose", desc: "What don't I know that I don't know? Reveal blind spots, unexamined assumptions, and untrained instincts." },
+    { num: "02", title: "Equip", desc: "Learn the framework. Get the vocabulary. Understand the mental model — not just the definition, but how and when to deploy it." },
+    { num: "03", title: "Exercise", desc: "Apply the skill to a live problem — under time pressure, with feedback, in front of peers. Pressure-tested understanding." },
+    { num: "04", title: "Embed", desc: "Practise in the real world. Spot it in conversations, news, decisions. Use the journal to log every application." },
+    { num: "05", title: "Export", desc: "Teach it. Adapt it. Apply it to a domain no one showed you. If you can transfer it, the skill is yours." },
+];
+
+const virtusOutcomes = [
+    { title: "Problem → System", desc: "When you can decompose any problem into variables, gaps, and game boards, nothing feels overwhelming. Complexity becomes components." },
+    { title: "Noise Becomes Signal", desc: "Students stop accepting claims at face value. They evaluate evidence, check sources, spot fallacies, and ask \"under what conditions?\" — automatically." },
+    { title: "Ideas Land", desc: "Knowing something and communicating it are different skills. Virtus students structure arguments, read audiences, and make people listen — in writing, in speech, and in room with power dynamics." },
+    { title: "Thinking Becomes Visible", desc: "The journal and teach-back system makes thinking tangible. Students can see their own reasoning improve week over week — and so can their parents and teachers." },
+    { title: "The Critical Unlock", desc: "When a student walks into a college interview, a debate, a boardroom, or a difficult conversation — and they can decompose the problem, evaluate the claims, communicate their position, and navigate the room — they don't need to be the smartest person there. They just need to be the clearest thinker." },
+];
+
 // ─── Page ────────────────────────────────────────────────────────────
 
 export default function VirtusPage() {
@@ -389,6 +415,140 @@ export default function VirtusPage() {
                                 <span className="text-xs text-[#6B7A5A] font-medium">
                                     {s.source}
                                 </span>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ═══ THE VIRTUS JOURNAL ═══ */}
+            <section className="py-20 md:py-28 px-6 bg-[#F2F3F4]">
+                <div className="max-w-5xl mx-auto">
+                    <motion.div
+                        className="text-center mb-16"
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="font-display text-[36px] md:text-[56px] leading-[1.1] tracking-[-0.02em] text-black mb-6">
+                            The Virtus Journal
+                        </h2>
+                        <p className="text-[15px] text-[#999] max-w-2xl mx-auto leading-[1.6]">
+                            A thinking journal designed to turn intellectual skills into daily habits.
+                            Students don&rsquo;t just practise in sessions &mdash; they spot, apply, and
+                            refine these skills in their everyday lives, building a personal library of
+                            real-world case studies.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {virtusJournal.map((j) => (
+                            <motion.div
+                                key={j.title}
+                                className="p-8 rounded-[24px] bg-white/90 backdrop-blur-sm border border-[#E5E5E5]/60 shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_30px_rgba(0,0,0,0.06)] transition-shadow flex flex-col"
+                                variants={staggerItem}
+                            >
+                                <h3 className="text-xl font-display text-black mb-3">
+                                    {j.title}
+                                </h3>
+                                <p className="text-[#999] text-sm leading-relaxed">
+                                    {j.desc}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ═══ THE VIRTUS METHODOLOGY ═══ */}
+            <section className="py-20 md:py-28 px-6 bg-[#EAEBEC]">
+                <div className="max-w-5xl mx-auto">
+                    <motion.h2
+                        className="font-display text-[36px] md:text-[52px] leading-[1.1] tracking-[-0.02em] text-black mb-20"
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        The Virtus Methodology
+                    </motion.h2>
+
+                    <motion.div
+                        className="space-y-0"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {virtusMethodology.map((step) => (
+                            <motion.div
+                                key={step.num}
+                                className="flex flex-col md:flex-row md:items-center gap-4 md:gap-12 py-8 border-t border-black/10 group"
+                                variants={staggerItem}
+                            >
+                                <span className="text-4xl md:text-5xl font-mono text-black/10 shrink-0 w-20">
+                                    {step.num}
+                                </span>
+                                <h3 className="text-2xl md:text-4xl font-display text-black shrink-0 md:w-56 group-hover:text-black/60 transition-colors">
+                                    {step.title}
+                                </h3>
+                                <p className="text-[#999] leading-relaxed flex-1">
+                                    {step.desc}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* ═══ OUTCOMES — WHY THIS ACTUALLY WORKS ═══ */}
+            <section className="py-20 md:py-28 px-6 bg-[#F2F3F4]">
+                <div className="max-w-5xl mx-auto">
+                    <motion.div
+                        className="mb-16"
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#999] mb-4 block">
+                            Outcomes
+                        </span>
+                        <h2 className="font-display text-[36px] md:text-[52px] leading-[1.1] tracking-[-0.02em] text-black mb-4">
+                            Why This Actually Works
+                        </h2>
+                        <p className="text-[15px] text-[#999] max-w-2xl leading-[1.6]">
+                            Four things happen when a student completes Virtus &mdash; and one fundamental
+                            shift that changes how they navigate school, careers, and life.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {virtusOutcomes.map((o) => (
+                            <motion.div
+                                key={o.title}
+                                className={`p-8 md:p-10 rounded-[24px] bg-white/90 backdrop-blur-sm border border-[#E5E5E5]/60 shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_30px_rgba(0,0,0,0.06)] transition-shadow ${o.title === "The Critical Unlock" ? "sm:col-span-2" : ""}`}
+                                variants={staggerItem}
+                            >
+                                <h3 className="text-xl md:text-2xl font-display text-black mb-4">
+                                    {o.title}
+                                </h3>
+                                <p className="text-[#999] leading-relaxed">
+                                    {o.desc}
+                                </p>
                             </motion.div>
                         ))}
                     </motion.div>
