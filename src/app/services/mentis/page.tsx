@@ -34,30 +34,32 @@ const modules = [
         name: "THE FORGE",
         focus: "Identity & Standards",
         rewires: "Who you decide to be determines everything else",
-        intro: "This is where you decide to determine everything else.",
+        intro: "Who you decide to be determines everything else.",
         keyQuestion: "Who am I choosing to be — and what standards does that person hold?",
         mindsets: [
             { name: "High Standards", idea: "Your standards become your floor, not your ceiling" },
+            { name: "Authenticity", idea: "Stop performing, start being" },
             { name: "Unapologetically Academic", idea: "Owning intellectual hunger without apology" },
-            { name: "No Shortcuts / No Excuses", idea: "Owning everything about your progress" },
-            { name: "Anti-Mediocrity", idea: "You are the CEO of your life — one needs every ounce" },
-            { name: "Anti-Entitlement", idea: "Nothing is owed. Everything is earned and compounding slowly" },
+            { name: "Un-shamefully Ambitious", idea: "Ambition is not a dirty word" },
+            { name: "Boss Mentality", idea: "You are the CEO of your life — own every outcome" },
+            { name: "Anti-Entitlement", idea: "Nothing is owed. Everything is earned or given" },
         ],
     },
     {
         num: "02",
-        name: "THE LINK",
+        name: "THE LENS",
         focus: "Thinking & Perception",
         rewires: "How you see problems, form opinions, and process reality",
         intro: "How you see the problem IS the problem.",
         keyQuestion: "Am I seeing reality, or am I seeing my assumptions about reality?",
         mindsets: [
-            { name: "Curiosity", idea: "The meta-skill. Questions unlock angles — different insight" },
-            { name: "Consent vs Synthetic", idea: "Genuine thinking vs manufactured opinion. Learn to tell the difference" },
-            { name: "First Principles", idea: "Strip away assumptions. Get to the roots" },
-            { name: "Consume → Synthesis", idea: "Reading isn't enough. Thinking is a practice" },
-            { name: "Nothing is a \"problem\"", idea: "It's a situation to navigate" },
-            { name: "Systems over Events", idea: "See the structure behind the noise" },
+            { name: "Curiosity", idea: "The meta-skill. Questions > Answers" },
+            { name: "Unconventional Thinking", idea: "Different angle = different insight" },
+            { name: "Seek Understanding", idea: "Don't argue to win. Argue to learn" },
+            { name: "Consume + Synthesize", idea: "Reading isn't knowing. Synthesis is" },
+            { name: "Think Long Term", idea: "Zoom out. What does this look like in 5 years?" },
+            { name: "Problem → Situations", idea: "Nothing is a \"problem\" — it's a situation to navigate" },
+            { name: "Detachment", idea: "Not everything deserves your energy. Learn to triage" },
         ],
     },
     {
@@ -69,11 +71,13 @@ const modules = [
         keyQuestion: "What's the smallest move I can make in the next 60 minutes?",
         mindsets: [
             { name: "Bias Towards Action", idea: "Move. Adjust. Repeat. Paralysis is the real failure" },
+            { name: "Done > Perfect", idea: "Perfectionism is procrastination in a tuxedo" },
             { name: "Figure It Out", idea: "Resourcefulness > Resources" },
-            { name: "The 80/20 Rule", idea: "The vital few always outweigh the trivial many" },
+            { name: "Be Intentional", idea: "Every action, meeting, hour — on purpose" },
             { name: "Plan Strategically", idea: "Strategy is the map. Tactics are your legs. Train both" },
-            { name: "Consistency Over Intensity", idea: "Showing up daily beats heroic effort" },
-            { name: "Time Is Currency", idea: "You can earn more money. You cannot earn more time" },
+            { name: "Consistency", idea: "Show up. Again. And again. That's it" },
+            { name: "Be on Time", idea: "Punctuality = respect. For others and yourself" },
+            { name: "Time > Money", idea: "You can earn more money. You cannot earn more time" },
         ],
     },
     {
@@ -84,12 +88,14 @@ const modules = [
         intro: "Pressure doesn't break you. It reveals what you're made of — and makes you harder.",
         keyQuestion: "What would I do if I knew I couldn't be broken by the outcome?",
         mindsets: [
-            { name: "Comfortable with the Uncomfortable", idea: "Accept the real with grace" },
+            { name: "Stoicism", idea: "Control the controllable. Accept the rest with grace" },
             { name: "Antifragility", idea: "Don't just survive chaos — grow from it" },
-            { name: "Voluntary Discomfort", idea: "Choose hard. So when hard comes, you're ready" },
-            { name: "Eliminate Fear of Failure", idea: "Every loss is both a lesson and a launch pad" },
-            { name: "Be the Last One Standing", idea: "Persistence always outlasts the person who doesn't try" },
-            { name: "Rewrite > Excitement", idea: "Same chemical. Different story" },
+            { name: "Courage", idea: "Name the worst case. You'll usually find it's survivable" },
+            { name: "Eliminate Fear of Failure", idea: "Every loss is tuition" },
+            { name: "Become Unbreakable", idea: "Stack resilience until you're the person who doesn't quit" },
+            { name: "Respond, Don't React", idea: "The gap between stimulus and response is where freedom lives" },
+            { name: "Nerves → Excitement", idea: "Same chemical. Different story" },
+            { name: "Healthy Indifference", idea: "Care deeply about what matters. Release everything else" },
         ],
     },
     {
@@ -97,31 +103,29 @@ const modules = [
         name: "THE FLAME",
         focus: "Drive & Momentum",
         rewires: "What keeps you moving when motivation disappears",
-        intro: "Motivation gets you started. Systems keep you going.",
-        keyQuestion: "What am I compounding — and is it what I actually want?",
+        intro: "Motivation is a visitor. Systems and compounding are residents.",
+        keyQuestion: "Am I building momentum, or am I starting over every Monday?",
         mindsets: [
-            { name: "Compounding", idea: "Small daily investments = massive long-term returns" },
-            { name: "Intrinsic Drive", idea: "Play games you'd play even without the scoreboard" },
-            { name: "Identity-Based Habits", idea: "Don't build habits. Build identity. Habits follow" },
-            { name: "Energy Management", idea: "Manage energy, not just time" },
-            { name: "Purpose over Passion", idea: "Passion fades. Purpose endures" },
-            { name: "Non-Zero Days", idea: "Never let a day pass without progress" },
+            { name: "Persistence", idea: "Keep going after the motivation evaporates" },
+            { name: "Ferocity", idea: "Controlled intensity. Channel energy into craft" },
+            { name: "Compounding", idea: "1% daily = 37x in a year. Small wins stack" },
+            { name: "Asymmetric Risk", idea: "Seek bets where downside is small and upside is massive" },
+            { name: "Activator", idea: "Be the person who starts things. Initiative is rare" },
+            { name: "Failure → Feedback", idea: "Every setback is data, not destiny" },
         ],
     },
     {
         num: "06",
         name: "THE MIRROR",
-        focus: "Social & Emotional Intel",
+        focus: "Social & Emotional Intelligence",
         rewires: "How you show up for others — and yourself",
-        intro: "The quality of your life = the quality of your relationships.",
-        keyQuestion: "Am I showing up as who I want to be — or who others expect me to be?",
+        intro: "The strongest people are the most self-aware — and the most generous.",
+        keyQuestion: "Am I protecting myself from disappointment, or am I protecting myself from life?",
         mindsets: [
-            { name: "Radical Honesty", idea: "Say what you mean. Mean what you say" },
-            { name: "Generosity", idea: "Give without keeping score. Value flows back" },
-            { name: "Vulnerability", idea: "Strength is in the openness, not the armor" },
-            { name: "Active Listening", idea: "Listen to understand, not to respond" },
-            { name: "Boundary Setting", idea: "Saying no to others = saying yes to yourself" },
-            { name: "Empathy without Absorption", idea: "Feel with people, not for people" },
+            { name: "Celebrate Others", idea: "Abundance mindset. Their win isn't your loss" },
+            { name: "Vulnerability as Charisma", idea: "Disarm through openness, not armour" },
+            { name: "Stop Optimising for Safety", idea: "Playing not-to-lose costs you the life you could have had" },
+            { name: "Emotional Regulation", idea: "Master the space between feeling and acting" },
         ],
     },
 ];
@@ -178,6 +182,16 @@ const mentisOutcomes = [
     { title: "Experiments Replace Anxiety", desc: "Instead of \"what if I fail?\" students ask \"what will I learn?\" The experiment frame turns every risk into data collection — and data isn't scary." },
     { title: "Doctrine Creates Speed", desc: "When you've written your operating principles, you don't freeze at decision points. You consult your Codex. Decisions that used to take weeks take seconds." },
     { title: "The Critical Unlock", desc: "When a student faces pressure, peer influence, or uncertainty, 8 weeks of practised principles and a self-authored Codex is more powerful than \"just be confident.\" They don't need motivation. They have doctrine." },
+];
+
+const mentisJournal = [
+    { title: "Daily Log", desc: "One mindset practised today. What happened. What you noticed about yourself." },
+    { title: "Belief Tracker", desc: "Inherited beliefs under active investigation. Where they came from. Whether they still serve you." },
+    { title: "Experiment Log", desc: "2-week experiments: hypothesis → daily action → result. The scientific method applied to your own mind." },
+    { title: "Discomfort Log", desc: "Voluntary discomforts attempted. What you feared. What actually happened. The gap between prediction and reality." },
+    { title: "Compound Chain", desc: "Visual streak tracker for your ONE daily action. The only rule: don't break the chain." },
+    { title: "Codex Drafts", desc: "Running drafts of your personal operating principles. Messy first, refined over time." },
+    { title: "Weekly Reflection", desc: "\"What did I learn about how I think this week?\" — one page, every Sunday." },
 ];
 
 // ─── Module Accordion Component ──────────────────────────────────────
@@ -549,6 +563,51 @@ export default function MentisPage() {
                             <ModuleAccordion key={m.num} module={m} index={i} />
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* ═══ THE MENTIS JOURNAL ═══ */}
+            <section className="py-20 md:py-28 px-6 bg-[#EAEBEC]">
+                <div className="max-w-5xl mx-auto">
+                    <motion.div
+                        className="text-center mb-16"
+                        variants={fadeUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="font-display text-[36px] md:text-[56px] leading-[1.1] tracking-[-0.02em] text-black mb-6">
+                            The Mentis Journal
+                        </h2>
+                        <p className="text-[15px] text-[#999] max-w-2xl mx-auto leading-[1.6]">
+                            A dedicated journaling system &mdash; physical or digital &mdash; that turns
+                            reflection into rewiring. Students don&rsquo;t just think about mindsets. They
+                            track them, test them, and watch themselves change in real-time data.
+                        </p>
+                    </motion.div>
+
+                    <motion.div
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {mentisJournal.map((j) => (
+                            <motion.div
+                                key={j.title}
+                                className="p-8 rounded-[24px] bg-white/90 backdrop-blur-sm border border-[#E5E5E5]/60 shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_30px_rgba(0,0,0,0.06)] transition-shadow flex flex-col"
+                                variants={staggerItem}
+                            >
+                                <h3 className="text-xl font-display text-black mb-3">
+                                    {j.title}
+                                </h3>
+                                <p className="text-[#999] text-sm leading-relaxed">
+                                    {j.desc}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </div>
             </section>
 

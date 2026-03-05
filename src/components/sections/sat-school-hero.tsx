@@ -1,362 +1,327 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
-// Exact Book Data from actualsaat.md
+/**
+ * Book data with cover images
+ */
 const booksData = [
-  { id: 1, src: "https://framerusercontent.com/images/WdJtZFRz1a5uCspzEuvcPaLMHnQ.png?width=352&height=500 ", width: 352, height: 500, angle: 0 },
-  { id: 2, src: "https://framerusercontent.com/images/j5yxyVe1iu9w0CySlM3LEa3Zpss.png?width=329&height=500 ", width: 329, height: 500, angle: 45 },
-  { id: 3, src: "https://framerusercontent.com/images/AiHY69YkACiQQY2EgvfKvVOkrGw.png?width=270&height=500 ", width: 270, height: 500, angle: 90 },
-  { id: 4, src: "https://framerusercontent.com/images/k42PNZ5dHw6E8vAVsvC8DDWAE4.png?width=329&height=500 ", width: 329, height: 500, angle: 135 },
-  { id: 5, src: "https://framerusercontent.com/images/Re9q7l7CKkmAcr5LLd7NejdHqs.png?width=331&height=500 ", width: 331, height: 500, angle: 180 }, // -181 ~ 180
-  { id: 6, src: "https://framerusercontent.com/images/HoTkmNxq3kU8tsYMhQ32ynbaqCo.png?width=323&height=500 ", width: 323, height: 500, angle: 225 },
-  { id: 7, src: "https://framerusercontent.com/images/NGbEdh3cH7zSpi24rl4raehw72A.png?width=401&height=600 ", width: 401, height: 600, angle: 270 },
-  { id: 8, src: "https://framerusercontent.com/images/hOEZAHOENY57BgnRVXf35nAclA.png?width=354&height=500 ", width: 354, height: 500, angle: 315 },
+  { id: 1, src: "https://framerusercontent.com/images/WdJtZFRz1a5uCspzEuvcPaLMHnQ.png", alt: "Elon Musk", color: "#272c1b" },
+  { id: 2, src: "https://framerusercontent.com/images/NGbEdh3cH7zSpi24rl4raehw72A.png", alt: "Ego is the Enemy", color: "#d3252b" },
+  { id: 3, src: "https://framerusercontent.com/images/AiHY69YkACiQQY2EgvfKvVOkrGw.png", alt: "Jony Ive", color: "#0c181b" },
+  { id: 4, src: "https://framerusercontent.com/images/k42PNZ5dHw6E8vAVsvC8DDWAE4.png", alt: "Seeking Wisdom", color: "#b9cac2" },
+  { id: 5, src: "https://framerusercontent.com/images/Re9q7l7CKkmAcr5LLd7NejdHqs.png", alt: "Naval Ravikant", color: "#ffef00" },
+  { id: 6, src: "https://framerusercontent.com/images/HoTkmNxq3kU8tsYMhQ32ynbaqCo.png", alt: "Lessons of History", color: "#fff" },
+  { id: 7, src: "https://framerusercontent.com/images/hOEZAHOENY57BgnRVXf35nAclA.png", alt: "Principles", color: "#020404" },
+  { id: 8, src: "https://framerusercontent.com/images/j5yxyVe1iu9w0CySlM3LEa3Zpss.png", alt: "The Snowball", color: "#022e4a" },
 ];
 
-const NOISE_IMG = "https://framerusercontent.com/images/6mcf62RlDfRfU61Yg5vb2pefpi4.png?width=256&height=256 ";
-
-const FramerBook = ({ src, width, height }: { src: string, width: number, height: number }) => {
-  const depth = 44; // Matches translateZ(22px) + translateZ(-22px)
+/**
+ * 3D Book component - renders a realistic book with cover, spine, page edges
+ */
+const Book3D = ({ src, alt, color }: { src: string; alt: string; color: string }) => {
+  const SPINE_W = 30;
 
   return (
     <div
       style={{
-        width: `${width}px`,
-        height: `${height}px`,
-        position: 'relative',
+        width: '100%',
+        height: '100%',
         transformStyle: 'preserve-3d',
-        transform: 'rotate(45deg) rotateX(-40deg) rotateY(-5deg)', // Exact book tilt
+        position: 'relative',
       }}
     >
-      {/* Cover (Front) */}
+      {/* Front Cover */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          transform: `translateZ(${depth / 2}px)`, // 22px
+          zIndex: 1,
           backfaceVisibility: 'hidden',
-          borderRadius: '2px', // Slight rounding
           overflow: 'hidden',
-          backgroundColor: '#fff', // fallback
+          borderRadius: '2px',
         }}
       >
         <Image
           src={src}
-          alt="Book Cover"
+          alt={alt}
           fill
           className="object-cover"
-          sizes={`${width}px`}
+          sizes="450px"
+          unoptimized
         />
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            backgroundImage: `url(${NOISE_IMG})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '153.5px',
-            opacity: 0.4, // Subtle noise
-            pointerEvents: 'none'
-          }}
-        />
-        <div className="absolute left-0 top-0 bottom-0 w-[20%] bg-gradient-to-r from-black/50 to-transparent z-20 pointer-events-none" />
+        {/* Light overlay for realism */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 2,
+          mixBlendMode: 'overlay', opacity: 0.2,
+          background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(0,0,0,0.3) 100%)',
+        }} />
+        {/* Spine edge effect on left */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 2,
+          mixBlendMode: 'overlay',
+          background: 'linear-gradient(90deg, #fff 0%, #000 2% 3%, rgba(255,255,255,0.5) 6%, #fff 8%, transparent 10%)',
+        }} />
+        {/* Darken blend for spine crease */}
+        <div style={{
+          position: 'absolute', inset: 0, zIndex: 2,
+          mixBlendMode: 'darken', opacity: 0.51,
+          background: 'linear-gradient(90deg, #fff 0%, #000 2%, rgba(0,0,0,0.42) 3%, rgba(255,255,255,0.5) 6%, #fff 8%, transparent 10%)',
+        }} />
       </div>
 
-      {/* Back */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          transform: `translateZ(-${depth / 2}px) rotateY(180deg)`, // -22px
-          backgroundColor: '#1a1a1a', // Dark back cover
-          backfaceVisibility: 'hidden',
-          borderRadius: '2px',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${NOISE_IMG})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '153.5px',
-            opacity: 0.1,
-          }}
-        />
-        <div className="absolute right-0 top-0 bottom-0 w-[20%] bg-gradient-to-l from-black/50 to-transparent pointer-events-none" />
-      </div>
+      {/* Spine (left edge) */}
+      <div style={{
+        position: 'absolute', top: 0, bottom: 0, left: `-${SPINE_W / 2}px`,
+        width: `${SPINE_W}px`, zIndex: 1,
+        transformOrigin: 'right center',
+        transform: 'rotateY(-90deg)',
+        backgroundColor: color,
+        filter: 'brightness(0.35)',
+      }} />
 
-      {/* Right (Pages) - The visible page edge on the side */}
-      <div
-        style={{
-          position: 'absolute',
-          width: `${depth}px`,
-          height: `${height}px`,
-          right: 0,
-          top: 0,
-          transformOrigin: 'right',
-          transform: 'rotateY(-90deg)',
-          backgroundColor: '#f5f5f0', // Page color
-          overflow: 'hidden'
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${NOISE_IMG})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '153.5px',
-            opacity: 0.1,
-          }}
-        />
-        {/* Page striations */}
-        <div style={{ position: 'absolute', inset: 0, background: 'repeating-linear-gradient(90deg, transparent 0, transparent 2px, rgba(0,0,0,0.03) 3px)' }} />
-      </div>
+      {/* Pages - right edge */}
+      <div style={{
+        position: 'absolute', top: 0, bottom: 0, right: '-10px',
+        width: '44px', zIndex: 1,
+        backgroundColor: '#ededed',
+        overflow: 'hidden',
+      }} />
 
-      {/* Spine (Left) */}
-      <div
-        style={{
-          position: 'absolute',
-          width: `${depth}px`,
-          height: `${height}px`,
-          left: 0,
-          top: 0,
-          transformOrigin: 'left',
-          transform: 'rotateY(90deg)',
-          backgroundColor: '#111',
-          overflow: 'hidden'
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${NOISE_IMG})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '153.5px',
-            opacity: 0.2,
-          }}
-        />
-        {/* Shine on spine */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
-      </div>
+      {/* Top page edge */}
+      <div style={{
+        position: 'absolute', top: '-22px', left: 0, right: '12px',
+        height: '44px', zIndex: 1,
+        backgroundColor: '#fff',
+        overflow: 'hidden',
+      }} />
 
-      {/* Top (Pages) */}
-      <div
-        style={{
-          position: 'absolute',
-          width: `${width}px`,
-          height: `${depth}px`,
-          top: 0,
-          left: 0,
-          transformOrigin: 'top',
-          transform: 'rotateX(-90deg)',
-          backgroundColor: '#f5f5f0',
-          overflow: 'hidden'
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${NOISE_IMG})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '153.5px',
-            opacity: 0.1,
-          }}
-        />
-      </div>
+      {/* Bottom page edge */}
+      <div style={{
+        position: 'absolute', bottom: '-22px', left: 0, right: '12px',
+        height: '44px', zIndex: 1,
+        backgroundColor: '#485254',
+        overflow: 'hidden',
+      }} />
 
-      {/* Bottom (Pages) */}
-      <div
-        style={{
-          position: 'absolute',
-          width: `${width}px`,
-          height: `${depth}px`,
-          bottom: 0,
-          left: 0,
-          transformOrigin: 'bottom',
-          transform: 'rotateX(90deg)',
-          backgroundColor: '#f5f5f0',
-          overflow: 'hidden'
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url(${NOISE_IMG})`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '153.5px',
-            opacity: 0.1,
-          }}
-        />
-      </div>
+      {/* Hue overlay for book tint */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 3,
+        backgroundColor: color,
+        mixBlendMode: 'hue',
+        overflow: 'hidden',
+      }} />
     </div>
   );
 };
 
+/**
+ * SatSchoolHero - Ferris wheel style book carousel
+ *
+ * The original Framer design uses:
+ * 1. A large container (2002px tall) positioned over the hero
+ * 2. A hub at center that spins (rotate: 0→360 via loop animation)
+ * 3. 8 arms radiating outward (450px each), each holding a 3D book
+ * 4. The whole thing is tilted with scale(0.5) rotate(47deg) rotateX(29deg) rotateY(-70deg)
+ *    on the arm wrappers, creating the 3D depth perspective
+ * 5. A diagonal mask hides the bottom-left portion
+ * 
+ * The visual result: Books appear to orbit in a 3D oval path - 
+ * coming toward the viewer on one side and receding on the other.
+ */
 const SatSchoolHero = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const NUM_BOOKS = booksData.length;
+  const ARM_LENGTH = 500; // distance from center to book
+
   return (
-    <section className="relative w-full bg-black overflow-hidden flex flex-col justify-center min-h-screen" style={{ isolation: 'isolate' }}>
+    <section className="relative w-full bg-black overflow-hidden min-h-screen">
 
-      {/* Container matching "Hero" wrapper layout */}
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-0 relative z-10 items-center h-full pt-20">
-
-        {/* Left Column - Text Content */}
-        <div className="flex flex-col justify-center relative z-20 pt-10 lg:pt-0 pl-4 lg:pl-0">
-
-          {/* Headline */}
-          <div className="mb-4">
-            <h1 className="font-[var(--font-instrument-serif)] text-white text-[50px] md:text-[60px] lg:text-[68px] leading-[1.1] font-light tracking-[-0.03em]">
+      {/* ===== Text Content (absolute positioned for full control) ===== */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-20 h-full flex items-center">
+          <div className="max-w-[480px] pointer-events-auto">
+            {/* Headline */}
+            <h1
+              className="text-white leading-[1.1] font-light tracking-[-0.03em] mb-4"
+              style={{
+                fontFamily: '"Instrument Serif", Georgia, serif',
+                fontSize: 'clamp(2.5rem, 4.5vw, 4.25rem)',
+              }}
+            >
               Come to Get<br />
               Awe-Inspired
             </h1>
-          </div>
 
-          {/* Subtitle */}
-          <div className="mb-8">
-            <h1 className="font-sans text-white text-[18px] font-medium tracking-normal leading-[1.3]">
+            <p className="text-white text-lg font-medium leading-[1.3] mb-6 font-sans">
               *Intellectually
-            </h1>
-          </div>
-
-          {/* Description */}
-          <div className="font-sans text-white text-[18px] md:text-[20px] font-medium tracking-normal mb-8 max-w-[450px] leading-[1.3]">
-            <p>Find your tribe - Talk, Think and Network.</p>
-          </div>
-
-          {/* Buttons */}
-          <div className="flex flex-row gap-4 mb-20 whitespace-nowrap">
-            <a
-              href="https://rzp.io/rzp/sWf80Lp "
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative h-[60px] px-10 rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform duration-200 cursor-pointer"
-            >
-              <span className="font-sans text-black font-medium text-[16px] transition-colors">
-                Read More
-              </span>
-            </a>
-            <a
-              href="https://rzp.io/rzp/sWf80Lp "
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative h-[60px] px-10 rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform duration-200 cursor-pointer"
-            >
-              <span className="font-sans text-black font-medium text-[16px] transition-colors">
-                I want to come!!
-              </span>
-            </a>
-          </div>
-
-          {/* Quote & Profile */}
-          <div className="relative pl-6 border-l border-white/20 max-w-[480px]">
-            <p className="font-[var(--font-instrument-serif)] text-white/90 text-[14px] leading-[1.6] italic mb-6">
-              “I host Invite-only Sessions where we build intellectual competences to ignite the PolyMaths within us.
-              <br /><br />
-              Learn the Mental Models to become great Capital Allocators, think investors, Entrepreneurs or even Innovators and Builders”
             </p>
 
-            <div className="flex items-center gap-3">
-              <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10">
-                <Image
-                  src="https://framerusercontent.com/images/710veydyjYi2K9KDA8l6qn1kAtc.jpg "
-                  alt="Neelmani Bagaria"
-                  fill
-                  className="object-cover"
-                />
+            <p className="text-white text-lg font-medium leading-[1.3] mb-8 font-sans">
+              Find your tribe - Talk, Think and Network.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-row gap-4 mb-14 flex-wrap">
+              <a
+                href="https://rzp.io/rzp/sWf80Lp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-[48px] px-8 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:opacity-80 hover:scale-105"
+              >
+                <span className="text-black font-medium text-[15px] font-sans">Read More</span>
+              </a>
+              <a
+                href="https://rzp.io/rzp/sWf80Lp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-[48px] px-8 rounded-full bg-white flex items-center justify-center transition-all duration-300 hover:opacity-80 hover:scale-105"
+              >
+                <span className="text-black font-medium text-[15px] font-sans">I want to come!!</span>
+              </a>
+            </div>
+
+            {/* Quote */}
+            <div className="relative pl-5 border-l border-white/20 max-w-[420px]">
+              <p className="text-white/60 text-[13px] leading-relaxed mb-3 font-sans">
+                &quot;I host Invite-only Sessions where we build intellectual competences
+                to ignite the PolyMaths within us.
+              </p>
+              <p className="text-white/60 text-[13px] leading-relaxed mb-4 font-sans">
+                Learn the Mental Models to become great Capital Allocators,
+                think investors, Entrepreneurs or even Innovators and Builders&quot;
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="relative w-7 h-7 rounded-full overflow-hidden">
+                  <Image
+                    src="https://framerusercontent.com/images/710veydyjYi2K9KDA8l6qn1kAtc.jpg"
+                    alt="Neelmani Bagaria"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
+                </div>
+                <span className="text-white/90 text-[13px] font-medium font-sans">
+                  Neelmani Bagaria
+                </span>
               </div>
-              <span className="font-sans text-white/90 text-[12px] font-medium">
-                Neelmani Bagaria
-              </span>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Right Column - 3D Books Animation */}
+      {/* ===== 3D Book Carousel (Ferris Wheel) ===== */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          transformStyle: 'preserve-3d',
+        }}
+      >
+        {/* Large carousel container - mimics original 2002px tall stage */}
         <div
-          className="relative h-[500px] lg:h-[700px] w-full"
+          style={{
+            position: 'absolute',
+            width: '90%',
+            height: '2002px',
+            // Center the wheel to the right of the page
+            top: 'calc(50% - 1001px)',
+            left: '55%',
+            transformStyle: 'preserve-3d',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
         >
-          {/* BOOKS container - perspective lives HERE on the outer wrapper */}
+          {/* The spinning hub - this is what actually rotates */}
           <div
-            className="absolute inset-0 pointer-events-none select-none"
             style={{
+              position: 'relative',
+              width: '100px',
+              height: '100%',
               transformStyle: 'preserve-3d',
-              transform: 'perspective(1400px)',
-              overflow: 'visible',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              animation: mounted ? 'bookWheelSpin 50s linear infinite' : 'none',
             }}
           >
-            {/* Arm Wrap - viewing angle only, NO perspective here */}
-            <div
-              className="absolute flex items-center justify-center"
-              style={{
-                width: '90%',
-                height: '2002px',
-                top: 'calc(52% - 1001px)',
-                left: '51%',
-                transformStyle: 'preserve-3d',
-                transform: 'scale(0.5) rotate(47deg) rotateX(29deg) rotateY(-70deg)',
-                overflow: 'visible',
-              }}
-            >
-              {/* ARMS - The spinning element */}
-              <motion.div
-                className="relative flex flex-col items-center justify-center"
-                style={{
-                  width: '100px',
-                  height: '100%',
-                  transformStyle: 'preserve-3d',
-                  overflow: 'visible',
-                }}
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 50,
-                  ease: [0, 0, 1, 1],
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }}
-              >
-                {booksData.map((book) => (
+            {/* 8 arms radiating from center, each holding a book */}
+            {booksData.map((book, i) => {
+              const angleDeg = (360 / NUM_BOOKS) * i;
+
+              return (
+                <div
+                  key={book.id}
+                  style={{
+                    position: 'absolute',
+                    width: `${ARM_LENGTH}px`,
+                    height: '1px',
+                    transformStyle: 'preserve-3d',
+                    // Each arm points outward at its angle
+                    transform: `rotate(${angleDeg}deg)`,
+                    transformOrigin: 'left center',
+                    left: '50%',
+                    top: '50%',
+                  }}
+                >
+                  {/* Book at the end of the arm */}
                   <div
-                    key={book.id}
-                    className="absolute"
                     style={{
+                      position: 'absolute',
+                      right: 0,
+                      top: '50%',
                       width: '450px',
-                      height: '1px',
+                      height: '640px',
+                      transform: `translateY(-50%) rotate(${-angleDeg}deg) scale(0.85) rotate(47deg) rotateX(29deg) rotateY(-70deg)`,
                       transformStyle: 'preserve-3d',
-                      transform: `rotate(${book.angle}deg)`,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'flex-start',
-                      alignItems: 'center',
-                      overflow: 'visible',
+                      transformOrigin: 'center center',
                     }}
                   >
-                    {/* Book Holder - at the end of the arm */}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        right: 0,
-                        transformStyle: 'preserve-3d',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'flex-end',
-                        alignItems: 'center',
-                        overflow: 'visible',
-                      }}
-                    >
-                      <FramerBook src={book.src} width={book.width} height={book.height} />
-                    </div>
+                    <Book3D src={book.src} alt={book.alt} color={book.color} />
                   </div>
-                ))}
-              </motion.div>
-            </div>
+                </div>
+              );
+            })}
           </div>
-
-          {/* Ambient depth gradient simulation */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 pointer-events-none" />
         </div>
-
       </div>
+
+      {/* Subtle diagonal mask to fade lower-left books */}
+      <div
+        className="absolute inset-0 z-[12] pointer-events-none"
+        style={{
+          background: 'black',
+          mask: 'linear-gradient(135deg, transparent 0%, transparent 45%, black 65%)',
+          WebkitMask: 'linear-gradient(135deg, transparent 0%, transparent 45%, black 65%)',
+        }}
+      />
+
+      {/* Left fade gradient for text readability */}
+      <div
+        className="absolute inset-0 z-[15] pointer-events-none"
+        style={{
+          background: `linear-gradient(to right, 
+            rgba(0,0,0,0.95) 0%, 
+            rgba(0,0,0,0.8) 25%, 
+            rgba(0,0,0,0.3) 42%, 
+            transparent 55%
+          )`,
+        }}
+      />
+
+      {/* CSS Animation */}
+      <style jsx global>{`
+        @keyframes bookWheelSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </section>
   );
 };

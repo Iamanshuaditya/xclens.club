@@ -89,7 +89,7 @@ const sessions = [
         num: 2,
         name: "Interrogate",
         desc: "Torture claims like a prosecutor. Plausibility, testability, context, and interpretive loss.",
-        source: "Critical Thinking — Evaluating Claims & Notifications",
+        source: "Critical Thinking — Evaluating Claims & Justifications",
     },
     {
         num: 3,

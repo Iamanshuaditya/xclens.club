@@ -91,7 +91,7 @@ export default function WorkshopsPage() {
                                 Explore Schedule <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </span>
                         </a>
-                        <span className="text-sm text-white/40">Next Season Begins Oct 2026</span>
+                        <span className="text-sm text-white/40">Sessions are live!</span>
                     </motion.div>
                 </div>
             </section>
