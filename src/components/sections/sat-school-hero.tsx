@@ -375,17 +375,7 @@ const SatSchoolHero = () => {
         </div>
       </div>
 
-      {/* ===== Overlay mask (hides lower-left books) ===== */}
-      <div
-        className="absolute inset-0 z-[12] pointer-events-none"
-        style={{
-          backgroundColor: '#000',
-          transform: 'translateZ(900px)',
-          mask: 'linear-gradient(135deg, transparent 54%, #000 71%)',
-          WebkitMask: 'linear-gradient(135deg, transparent 54%, #000 71%)',
-          overflow: 'hidden',
-        }}
-      />
+{/* Overlay mask removed */}
 
       {/* ===== Left fade gradient for text readability ===== */}
       <div
